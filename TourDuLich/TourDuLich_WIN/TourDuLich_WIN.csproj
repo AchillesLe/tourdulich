@@ -46,14 +46,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="DiaDiem_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="DiaDiem_Form.Designer.cs">
+      <DependentUpon>DiaDiem_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoaiTour_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoaiTour_Form.Designer.cs">
+      <DependentUpon>LoaiTour_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TinhThanh_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TinhThanh_Form.Designer.cs">
+      <DependentUpon>TinhThanh_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tour_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tour_Form.Designer.cs">
+      <DependentUpon>Tour_Form.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DiaDiem_Form.resx">
+      <DependentUpon>DiaDiem_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoaiTour_Form.resx">
+      <DependentUpon>LoaiTour_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +96,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TinhThanh_Form.resx">
+      <DependentUpon>TinhThanh_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tour_Form.resx">
+      <DependentUpon>Tour_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +114,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BIZ\BIZ.csproj">
+      <Project>{3ba79bfc-87eb-4747-836c-dc0b1d2210dc}</Project>
+      <Name>BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MODEL\MODEL.csproj">
+      <Project>{ff283aef-fa2b-47fe-8872-74f0419aafea}</Project>
+      <Name>MODEL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

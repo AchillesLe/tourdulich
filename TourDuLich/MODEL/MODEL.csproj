@@ -30,8 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,11 +48,105 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ctthamquan.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="diadiem.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="diadiemdto.cs" />
+    <Compile Include="doanbuaan.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="doanchiphikhac.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="doandulich.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="doankhachhang.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="doankhachsan.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="doannhanvien.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="doanphuongtien.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GenericRepository.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="khachhang.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="khachsan.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="loaitour.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="loaitourdto.cs" />
+    <Compile Include="nhanvien.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="nhiemvu.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="phuongtien.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tinh.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tinhdto.cs" />
+    <Compile Include="tour.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TourDuLich.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourDuLich.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TourDuLich.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TourDuLich.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourDuLich.edmx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="database\DBtourdulich_3.sql" />
+    <Content Include="TourDuLich.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TourDuLich.edmx</DependentUpon>
+      <LastGenOutput>TourDuLich.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="TourDuLich.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TourDuLich.edmx</DependentUpon>
+      <LastGenOutput>TourDuLich.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="TourDuLich.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TourDuLich.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TourDuLich.edmx.diagram">
+      <DependentUpon>TourDuLich.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

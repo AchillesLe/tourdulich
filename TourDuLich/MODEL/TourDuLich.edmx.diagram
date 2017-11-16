@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8418a42dba28478e836c201f29298f57" Name="Diagram1">
+        <EntityTypeShape EntityType="tourdulichModel.ctthamquan" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.diadiem" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.doanbuaan" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.doanchiphikhac" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.doandulich" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.doankhachhang" Width="1.5" PointX="10.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.doankhachsan" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.doannhanvien" Width="1.5" PointX="10.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.doanphuongtien" Width="1.5" PointX="10.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.khachhang" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.khachsan" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.loaitour" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.nhanvien" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.nhiemvu" Width="1.5" PointX="8.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.phuongtien" Width="1.5" PointX="8.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.tinh" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tourdulichModel.tour" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="tourdulichModel.FK_ctthamquan_diadiem" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_ctthamquan_tour" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_diadiems_tinhs" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_doanbuaan_doan" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_doanchiphikhac_doan" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_doandulichs_tours" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_doankhachhang_doandulichs" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_doankhachsan_doandulichs" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_doannhanvien_doandulichs" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_doanphuongtien_doan" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_doankhachhang_khachhang" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_doankhachsan_khachsan" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_doannhanvien_nhanviens" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_doannhanvien_nhiemvu" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_doanphuongtien_phuongtien" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_khachsans_tinhs" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_tours_loaitour" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_tours_tinh_1" ManuallyRouted="false" />
+        <AssociationConnector Association="tourdulichModel.FK_tours_tinh_2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

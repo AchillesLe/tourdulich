@@ -1,0 +1,8 @@
+C:\Users\hp\Source\Repos\tourdulich\TourDuLich\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
+C:\Users\hp\Source\Repos\tourdulich\TourDuLich\MODEL\bin\Debug\MODEL.dll.config
+C:\Users\hp\Source\Repos\tourdulich\TourDuLich\MODEL\bin\Debug\MODEL.dll
+C:\Users\hp\Source\Repos\tourdulich\TourDuLich\MODEL\bin\Debug\MODEL.pdb
+C:\Users\hp\Source\Repos\tourdulich\TourDuLich\MODEL\bin\Debug\EntityFramework.dll
+C:\Users\hp\Source\Repos\tourdulich\TourDuLich\MODEL\bin\Debug\EntityFramework.xml
+C:\Users\hp\Source\Repos\tourdulich\TourDuLich\MODEL\obj\Debug\MODEL.dll
+C:\Users\hp\Source\Repos\tourdulich\TourDuLich\MODEL\obj\Debug\MODEL.pdb
