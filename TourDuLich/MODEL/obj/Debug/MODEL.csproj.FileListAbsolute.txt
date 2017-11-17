@@ -14,3 +14,11 @@ E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\TourDuLich\MODEL\bin
 E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\TourDuLich\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
 E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\TourDuLich\MODEL\obj\Debug\MODEL.dll
 E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\TourDuLich\MODEL\obj\Debug\MODEL.pdb
+G:\tourdulich\TourDuLich\MODEL\bin\Debug\MODEL.dll.config
+G:\tourdulich\TourDuLich\MODEL\bin\Debug\MODEL.dll
+G:\tourdulich\TourDuLich\MODEL\bin\Debug\MODEL.pdb
+G:\tourdulich\TourDuLich\MODEL\bin\Debug\EntityFramework.dll
+G:\tourdulich\TourDuLich\MODEL\bin\Debug\EntityFramework.xml
+G:\tourdulich\TourDuLich\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
+G:\tourdulich\TourDuLich\MODEL\obj\Debug\MODEL.dll
+G:\tourdulich\TourDuLich\MODEL\obj\Debug\MODEL.pdb

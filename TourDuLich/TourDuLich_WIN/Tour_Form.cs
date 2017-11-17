@@ -197,5 +197,10 @@ namespace TourDuLich_WIN
             this.Close();
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            DanhSachTour_Form form = new DanhSachTour_Form();
+            form.Show();
+        }
     }
 }

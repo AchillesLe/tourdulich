@@ -10,21 +10,23 @@ namespace BIZ
     public class TinhThanhBIZ
     {
         public IRepository<tinh> tinhrp;
+        public IRepository<khachsan> ksrp;
         public Dictionary<string, string> validatedictionary = new Dictionary<string, string>();
         public TinhThanhBIZ()
         {
             tinhrp = new GenericRepository<tinh>();
+            ksrp = new GenericRepository<khachsan>();
         }
         public bool add(tinh entity)
         {
-            if (validate(entity))
-                return tinhrp.Add(entity);
+            if(validate(entity))
+             return tinhrp.Add(entity);
             return false;
         }
         public bool update(tinh entity)
         {
-            if (validate(entity))
-                return tinhrp.Attach(entity);
+            if(validate(entity))
+             return tinhrp.Attach(entity);
             return false;
         }
         public List<tinhdto> list()
@@ -43,10 +45,17 @@ namespace BIZ
                 return false;
             return true;
         }
+
         public List<string> danhsachtinh()
         {
             return tinhrp.GetAll().Select(c => c.tentinh).Distinct().ToList();
         }
+
+        public List<khachsandto> danhsachkstheotinh(int value)
+        {
+            return ksrp.Find(c => c.idtinh == value).Select(c => new khachsandto(c)).ToList();
+        }
+
         public int laymatinh(string value)
         {
             return tinhrp.Find(c => c.tentinh == value).FirstOrDefault().id;

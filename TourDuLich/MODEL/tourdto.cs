@@ -17,6 +17,8 @@ namespace MODEL
         public double? giatour { get; set; }
         [System.ComponentModel.DisplayName("Loại tour")]
         public string loaitour { get; set; }
+        [System.ComponentModel.DisplayName("Đặc điểm")]
+        public string dacdiem { get; set; }
         [System.ComponentModel.DisplayName("Ngày tạo")]
         public Nullable<System.DateTime> ngaytao { get; set; }
         [System.ComponentModel.DisplayName("Ngày cập nhật")]
@@ -27,6 +29,7 @@ namespace MODEL
             tentour = entity.tentour;
             giatour = entity.giatour;
             loaitour = entity.loaitour.tenloaitour;
+            dacdiem = entity.dacdiem;
             ngaytao = entity.ngaytao;
             ngaycapnhat = entity.ngaycapnhat;
         }

@@ -13,7 +13,7 @@ using MODEL;
 namespace TourDuLich_WIN
 {
     public partial class LoaiTour_Form : Form
-    {
+    {        
         public LoaiTour_Form()
         {
             InitializeComponent();
@@ -86,7 +86,7 @@ namespace TourDuLich_WIN
                 this.ActiveControl = textBox2;
                 textBox2.SelectAll();
             }
-
+           
         }
 
         //private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

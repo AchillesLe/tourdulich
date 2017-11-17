@@ -39,6 +39,11 @@ namespace BIZ
             return tour.GetAll().Select(c => c.tentour).Distinct().ToList();
         }
 
+        public List<tourdto> timtour(string value)
+        {
+            return tour.Find(c => c.tentour == value).Select(c => new tourdto(c)).ToList();
+        }
+
         public int getcurrentid()
         {
             try { return tour.GetQuery().Count(); }

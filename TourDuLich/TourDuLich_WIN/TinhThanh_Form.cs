@@ -93,5 +93,11 @@ namespace TourDuLich_WIN
         {
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            KhachSanVaDiaDiem_Form form = new KhachSanVaDiaDiem_Form();
+            form.Show();
+        }
     }
 }

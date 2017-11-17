@@ -18,14 +18,14 @@ namespace BIZ
 
         public bool add(diadiem entity)
         {
-            if (validate(entity))
+            if(validate(entity))
                 return diadiem.Add(entity);
             return false;
         }
 
         public bool update(diadiem entity)
         {
-            if (validate(entity))
+            if(validate(entity))
                 return diadiem.Attach(entity);
             return false;
         }
@@ -38,6 +38,11 @@ namespace BIZ
         public List<string> listdiadiemtheotinh(int value)
         {
             return diadiem.Find(c => c.idtinh == value).Select(c => c.tendiadiem).ToList();
+        }
+
+        public List<diadiemdto> listchitietdiadiemtheotinh(int value)
+        {
+            return diadiem.Find(c => c.idtinh == value).Select(c => new diadiemdto(c)).ToList();
         }
 
         public int layiddiadiem(string value)

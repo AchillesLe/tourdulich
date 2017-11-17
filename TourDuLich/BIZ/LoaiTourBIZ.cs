@@ -18,14 +18,14 @@ namespace BIZ
 
         public bool add(loaitour entity)
         {
-            if (validate(entity))
+            if(validate(entity))
                 return loaitour.Add(entity);
             return false;
         }
 
         public bool update(loaitour entity)
         {
-            if (validate(entity))
+            if(validate(entity))
                 return loaitour.Attach(entity);
             return false;
         }
@@ -54,7 +54,7 @@ namespace BIZ
         public bool find(string value)
         {
             var a = loaitour.Find(c => c.tenloaitour == value).ToList();
-            if (a.Count > 0)
+            if(a.Count > 0 )
                 return false;
             return true;
         }

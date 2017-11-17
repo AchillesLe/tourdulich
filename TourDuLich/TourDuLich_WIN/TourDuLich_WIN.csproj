@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DanhSachTour_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DanhSachTour_Form.Designer.cs">
+      <DependentUpon>DanhSachTour_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="DiaDiem_Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DiaDiem_Form.Designer.cs">
       <DependentUpon>DiaDiem_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KhachSanVaDiaDiem_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KhachSanVaDiaDiem_Form.Designer.cs">
+      <DependentUpon>KhachSanVaDiaDiem_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="LoaiTour_Form.cs">
       <SubType>Form</SubType>
@@ -78,8 +90,14 @@
     <Compile Include="Tour_Form.Designer.cs">
       <DependentUpon>Tour_Form.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DanhSachTour_Form.resx">
+      <DependentUpon>DanhSachTour_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DiaDiem_Form.resx">
       <DependentUpon>DiaDiem_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KhachSanVaDiaDiem_Form.resx">
+      <DependentUpon>KhachSanVaDiaDiem_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoaiTour_Form.resx">
       <DependentUpon>LoaiTour_Form.cs</DependentUpon>

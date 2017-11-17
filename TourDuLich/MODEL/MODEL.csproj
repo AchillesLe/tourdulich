@@ -51,6 +51,7 @@
     <Compile Include="ctthamquan.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
+    <Compile Include="cttqdto.cs" />
     <Compile Include="diadiem.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
@@ -84,6 +85,7 @@
     <Compile Include="khachsan.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
+    <Compile Include="khachsandto.cs" />
     <Compile Include="lichsugiatour.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
