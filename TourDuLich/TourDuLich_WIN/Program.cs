@@ -16,7 +16,7 @@ namespace TourDuLich_WIN
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DiaDiem_Form());
+            Application.Run(new Menu());
         }
     }
 }

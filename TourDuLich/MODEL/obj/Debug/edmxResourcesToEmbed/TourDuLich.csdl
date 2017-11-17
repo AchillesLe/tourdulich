@@ -134,6 +134,17 @@
     <NavigationProperty Name="doankhachsans" Relationship="Self.FK_doankhachsan_khachsan" FromRole="khachsans" ToRole="doankhachsan" />
     <NavigationProperty Name="tinh" Relationship="Self.FK_khachsans_tinhs" FromRole="khachsans" ToRole="tinhs" />
   </EntityType>
+  <EntityType Name="lichsugiatour">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idtour" Type="Int32" Nullable="false" />
+    <Property Name="giatour" Type="Double" Nullable="false" />
+    <Property Name="ngaybatdau" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ngayketthuc" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="tour" Relationship="Self.FK_lichsugiatour_tours" FromRole="lichsugiatour" ToRole="tours" />
+  </EntityType>
   <EntityType Name="loaitour">
     <Key>
       <PropertyRef Name="id" />
@@ -163,8 +174,18 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="tenphuongtien" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tenphuongtien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="doanphuongtiens" Relationship="Self.FK_doanphuongtien_phuongtien" FromRole="phuongtiens" ToRole="doanphuongtien" />
+  </EntityType>
+  <EntityType Name="tinhke">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idtinhdau" Type="Int32" Nullable="false" />
+    <Property Name="idtinhcuoi" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tinh" Relationship="Self.FK_tinhke_tinh_1" FromRole="tinhke" ToRole="tinhs" />
+    <NavigationProperty Name="tinh1" Relationship="Self.FK_tinhke_tinh_2" FromRole="tinhke" ToRole="tinhs" />
   </EntityType>
   <EntityType Name="tinh">
     <Key>
@@ -174,6 +195,8 @@
     <Property Name="tentinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="diadiems" Relationship="Self.FK_diadiems_tinhs" FromRole="tinhs" ToRole="diadiems" />
     <NavigationProperty Name="khachsans" Relationship="Self.FK_khachsans_tinhs" FromRole="tinhs" ToRole="khachsans" />
+    <NavigationProperty Name="tinhkes" Relationship="Self.FK_tinhke_tinh_1" FromRole="tinhs" ToRole="tinhke" />
+    <NavigationProperty Name="tinhkes1" Relationship="Self.FK_tinhke_tinh_2" FromRole="tinhs" ToRole="tinhke" />
     <NavigationProperty Name="tours" Relationship="Self.FK_tours_tinh_1" FromRole="tinhs" ToRole="tours" />
     <NavigationProperty Name="tours1" Relationship="Self.FK_tours_tinh_2" FromRole="tinhs" ToRole="tours" />
   </EntityType>
@@ -192,6 +215,7 @@
     <Property Name="ngaycapnhat" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="ctthamquans" Relationship="Self.FK_ctthamquan_tour" FromRole="tours" ToRole="ctthamquan" />
     <NavigationProperty Name="doandulichs" Relationship="Self.FK_doandulichs_tours" FromRole="tours" ToRole="doandulichs" />
+    <NavigationProperty Name="lichsugiatours" Relationship="Self.FK_lichsugiatour_tours" FromRole="tours" ToRole="lichsugiatour" />
     <NavigationProperty Name="loaitour" Relationship="Self.FK_tours_loaitour" FromRole="tours" ToRole="loaitours" />
     <NavigationProperty Name="tinh" Relationship="Self.FK_tours_tinh_1" FromRole="tours" ToRole="tinhs" />
     <NavigationProperty Name="tinh1" Relationship="Self.FK_tours_tinh_2" FromRole="tours" ToRole="tinhs" />
@@ -388,6 +412,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_lichsugiatour_tours">
+    <End Role="tours" Type="Self.tour" Multiplicity="1" />
+    <End Role="lichsugiatour" Type="Self.lichsugiatour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tours">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="lichsugiatour">
+        <PropertyRef Name="idtour" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tours_loaitour">
     <End Role="loaitours" Type="Self.loaitour" Multiplicity="1" />
     <End Role="tours" Type="Self.tour" Multiplicity="*" />
@@ -397,6 +433,30 @@
       </Principal>
       <Dependent Role="tours">
         <PropertyRef Name="idtour" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tinhke_tinh_1">
+    <End Role="tinhs" Type="Self.tinh" Multiplicity="1" />
+    <End Role="tinhke" Type="Self.tinhke" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tinhs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tinhke">
+        <PropertyRef Name="idtinhdau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tinhke_tinh_2">
+    <End Role="tinhs" Type="Self.tinh" Multiplicity="1" />
+    <End Role="tinhke" Type="Self.tinhke" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tinhs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tinhke">
+        <PropertyRef Name="idtinhcuoi" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -436,10 +496,12 @@
     <EntitySet Name="doanphuongtiens" EntityType="Self.doanphuongtien" />
     <EntitySet Name="khachhangs" EntityType="Self.khachhang" />
     <EntitySet Name="khachsans" EntityType="Self.khachsan" />
+    <EntitySet Name="lichsugiatours" EntityType="Self.lichsugiatour" />
     <EntitySet Name="loaitours" EntityType="Self.loaitour" />
     <EntitySet Name="nhanviens" EntityType="Self.nhanvien" />
     <EntitySet Name="nhiemvus" EntityType="Self.nhiemvu" />
     <EntitySet Name="phuongtiens" EntityType="Self.phuongtien" />
+    <EntitySet Name="tinhkes" EntityType="Self.tinhke" />
     <EntitySet Name="tinhs" EntityType="Self.tinh" />
     <EntitySet Name="tours" EntityType="Self.tour" />
     <AssociationSet Name="FK_ctthamquan_diadiem" Association="Self.FK_ctthamquan_diadiem">
@@ -506,9 +568,21 @@
       <End Role="tinhs" EntitySet="tinhs" />
       <End Role="khachsans" EntitySet="khachsans" />
     </AssociationSet>
+    <AssociationSet Name="FK_lichsugiatour_tours" Association="Self.FK_lichsugiatour_tours">
+      <End Role="tours" EntitySet="tours" />
+      <End Role="lichsugiatour" EntitySet="lichsugiatours" />
+    </AssociationSet>
     <AssociationSet Name="FK_tours_loaitour" Association="Self.FK_tours_loaitour">
       <End Role="loaitours" EntitySet="loaitours" />
       <End Role="tours" EntitySet="tours" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tinhke_tinh_1" Association="Self.FK_tinhke_tinh_1">
+      <End Role="tinhs" EntitySet="tinhs" />
+      <End Role="tinhke" EntitySet="tinhkes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tinhke_tinh_2" Association="Self.FK_tinhke_tinh_2">
+      <End Role="tinhs" EntitySet="tinhs" />
+      <End Role="tinhke" EntitySet="tinhkes" />
     </AssociationSet>
     <AssociationSet Name="FK_tours_tinh_1" Association="Self.FK_tours_tinh_1">
       <End Role="tinhs" EntitySet="tinhs" />

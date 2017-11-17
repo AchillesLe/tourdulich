@@ -18,6 +18,7 @@ namespace MODEL
         {
             this.ctthamquans = new HashSet<ctthamquan>();
             this.doandulichs = new HashSet<doandulich>();
+            this.lichsugiatours = new HashSet<lichsugiatour>();
         }
     
         public int id { get; set; }
@@ -32,6 +33,7 @@ namespace MODEL
     
         public virtual ICollection<ctthamquan> ctthamquans { get; set; }
         public virtual ICollection<doandulich> doandulichs { get; set; }
+        public virtual ICollection<lichsugiatour> lichsugiatours { get; set; }
         public virtual loaitour loaitour { get; set; }
         public virtual tinh tinh { get; set; }
         public virtual tinh tinh1 { get; set; }

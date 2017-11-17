@@ -26,6 +26,21 @@ namespace TourDuLich_WIN
             dataGridView1.Columns[2].Width = 85;
         }
 
+        public void ViewErrors(Dictionary<string, string> Dictionary)
+        {
+            errorProvider1.Clear();
+            foreach (var entry in Dictionary)
+            {
+                switch (entry.Key)
+                {
+                    case "TENDIADIEM":
+                        errorProvider1.SetError(textBox2, entry.Value);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
         private void clearform()
         {
             DiaDiemBIZ ddb = new DiaDiemBIZ();
@@ -50,6 +65,7 @@ namespace TourDuLich_WIN
 
         private void button1_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
             if (comboBox1.SelectedItem == null)
             {
                 MessageBox.Show("Mã tỉnh không tồn tại");
@@ -72,7 +88,10 @@ namespace TourDuLich_WIN
                         clearform();
                     }
                     else
+                    {
                         MessageBox.Show("Thêm Thất Bại");
+                        ViewErrors(ddb.validatedictionary);
+                    }
                 }
                 else
                 {

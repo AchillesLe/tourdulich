@@ -36,10 +36,12 @@ namespace MODEL
         public DbSet<doanphuongtien> doanphuongtiens { get; set; }
         public DbSet<khachhang> khachhangs { get; set; }
         public DbSet<khachsan> khachsans { get; set; }
+        public DbSet<lichsugiatour> lichsugiatours { get; set; }
         public DbSet<loaitour> loaitours { get; set; }
         public DbSet<nhanvien> nhanviens { get; set; }
         public DbSet<nhiemvu> nhiemvus { get; set; }
         public DbSet<phuongtien> phuongtiens { get; set; }
+        public DbSet<tinhke> tinhkes { get; set; }
         public DbSet<tinh> tinhs { get; set; }
         public DbSet<tour> tours { get; set; }
     }

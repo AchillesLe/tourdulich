@@ -17,11 +17,15 @@ namespace BIZ
         }
         public bool add(tinh entity)
         {
-            return tinhrp.Add(entity);
+            if (validate(entity))
+                return tinhrp.Add(entity);
+            return false;
         }
         public bool update(tinh entity)
         {
-            return tinhrp.Attach(entity);
+            if (validate(entity))
+                return tinhrp.Attach(entity);
+            return false;
         }
         public List<tinhdto> list()
         {
@@ -46,6 +50,13 @@ namespace BIZ
         public int laymatinh(string value)
         {
             return tinhrp.Find(c => c.tentinh == value).FirstOrDefault().id;
+        }
+        public bool validate(tinh entity)
+        {
+            if (entity.tentinh.Trim().Length == 0) validatedictionary.Add("TENTINH", "Không được để trống tên tỉnh");
+            if (validatedictionary.Count() <= 0)
+                return true;
+            return false;
         }
     }
 }

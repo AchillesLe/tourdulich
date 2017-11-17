@@ -43,8 +43,25 @@ namespace TourDuLich_WIN
             dataGridView1.Columns[1].Width = 170;
         }
 
+        public void ViewErrors(Dictionary<string, string> Dictionary)
+        {
+            errorProvider1.Clear();
+            foreach (var entry in Dictionary)
+            {
+                switch (entry.Key)
+                {
+                    case "TENTINH":
+                        errorProvider1.SetError(textBox2, entry.Value);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
             TinhThanhBIZ ttb = new TinhThanhBIZ();
             tinh entity = new tinh();
             entity.id = Int32.Parse(textBox1.Text);
@@ -59,7 +76,10 @@ namespace TourDuLich_WIN
                     clearform();
                 }
                 else
+                {
                     MessageBox.Show("Thêm Thất Bại");
+                    ViewErrors(ttb.validatedictionary);
+                }
             }
             else
             {

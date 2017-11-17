@@ -39,5 +39,11 @@ namespace TourDuLich_WIN
         {
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Tour_Form form = new Tour_Form();
+            form.Show();
+        }
     }
 }

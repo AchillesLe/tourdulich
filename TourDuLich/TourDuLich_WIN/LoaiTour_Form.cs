@@ -13,7 +13,7 @@ using MODEL;
 namespace TourDuLich_WIN
 {
     public partial class LoaiTour_Form : Form
-    {        
+    {
         public LoaiTour_Form()
         {
             InitializeComponent();
@@ -31,6 +31,23 @@ namespace TourDuLich_WIN
             dataGridView1.Columns[0].Width = 130;
             dataGridView1.Columns[1].Width = 175;
         }
+
+        public void ViewErrors(Dictionary<string, string> Dictionary)
+        {
+            errorProvider1.Clear();
+            foreach (var entry in Dictionary)
+            {
+                switch (entry.Key)
+                {
+                    case "TENLOAI":
+                        errorProvider1.SetError(textBox2, entry.Value);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
         private void LoaiTour_Form_Load(object sender, EventArgs e)
         {
             LoaiTourBIZ ltb = new LoaiTourBIZ();
@@ -43,6 +60,7 @@ namespace TourDuLich_WIN
         //ADD
         private void button1_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
             LoaiTourBIZ ltb = new LoaiTourBIZ();
             loaitour entity = new loaitour();
             entity.id = Int32.Parse(textBox1.Text);
@@ -57,7 +75,10 @@ namespace TourDuLich_WIN
                     clearform();
                 }
                 else
+                {
                     MessageBox.Show("Thêm Thất Bại");
+                    ViewErrors(ltb.validatedictionary);
+                }
             }
             else
             {
@@ -65,7 +86,7 @@ namespace TourDuLich_WIN
                 this.ActiveControl = textBox2;
                 textBox2.SelectAll();
             }
-           
+
         }
 
         //private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

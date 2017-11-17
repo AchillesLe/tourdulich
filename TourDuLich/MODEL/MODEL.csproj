@@ -84,6 +84,9 @@
     <Compile Include="khachsan.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
+    <Compile Include="lichsugiatour.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
     <Compile Include="loaitour.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
@@ -102,9 +105,13 @@
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
     <Compile Include="tinhdto.cs" />
+    <Compile Include="tinhke.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
     <Compile Include="tour.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
+    <Compile Include="tourdto.cs" />
     <Compile Include="TourDuLich.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

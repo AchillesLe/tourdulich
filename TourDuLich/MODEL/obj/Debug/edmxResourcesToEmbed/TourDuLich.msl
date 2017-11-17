@@ -121,6 +121,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="lichsugiatours">
+      <EntityTypeMapping TypeName="tourdulichModel.lichsugiatour">
+        <MappingFragment StoreEntitySet="lichsugiatour">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idtour" ColumnName="idtour" />
+          <ScalarProperty Name="giatour" ColumnName="giatour" />
+          <ScalarProperty Name="ngaybatdau" ColumnName="ngaybatdau" />
+          <ScalarProperty Name="ngayketthuc" ColumnName="ngayketthuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="loaitours">
       <EntityTypeMapping TypeName="tourdulichModel.loaitour">
         <MappingFragment StoreEntitySet="loaitours">
@@ -150,6 +161,15 @@
         <MappingFragment StoreEntitySet="phuongtiens">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="tenphuongtien" ColumnName="tenphuongtien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tinhkes">
+      <EntityTypeMapping TypeName="tourdulichModel.tinhke">
+        <MappingFragment StoreEntitySet="tinhke">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idtinhdau" ColumnName="idtinhdau" />
+          <ScalarProperty Name="idtinhcuoi" ColumnName="idtinhcuoi" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
