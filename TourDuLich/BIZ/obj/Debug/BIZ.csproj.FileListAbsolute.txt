@@ -7,3 +7,12 @@ C:\Users\hp\Source\Repos\tourdulich\TourDuLich\BIZ\bin\Debug\MODEL.pdb
 C:\Users\hp\Source\Repos\tourdulich\TourDuLich\BIZ\bin\Debug\EntityFramework.xml
 C:\Users\hp\Source\Repos\tourdulich\TourDuLich\BIZ\obj\Debug\BIZ.dll
 C:\Users\hp\Source\Repos\tourdulich\TourDuLich\BIZ\obj\Debug\BIZ.pdb
+E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\TourDuLich\BIZ\bin\Debug\BIZ.dll
+E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\TourDuLich\BIZ\bin\Debug\BIZ.pdb
+E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\TourDuLich\BIZ\bin\Debug\MODEL.dll
+E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\TourDuLich\BIZ\bin\Debug\EntityFramework.dll
+E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\TourDuLich\BIZ\bin\Debug\MODEL.pdb
+E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\TourDuLich\BIZ\bin\Debug\EntityFramework.xml
+E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\TourDuLich\BIZ\obj\Debug\BIZ.csprojResolveAssemblyReference.cache
+E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\TourDuLich\BIZ\obj\Debug\BIZ.dll
+E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\TourDuLich\BIZ\obj\Debug\BIZ.pdb
