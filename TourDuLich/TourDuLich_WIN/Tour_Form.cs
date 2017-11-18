@@ -182,6 +182,13 @@ namespace TourDuLich_WIN
             bool check = tb.add(tour);
             if (check)
             {
+                lichsugiatour ls = new lichsugiatour();
+                LichSuGiaTourBIZ lsgtb = new LichSuGiaTourBIZ();
+                ls.idtour = tour.id;
+                ls.giatour = tour.giatour;
+                ls.ngaybatdau = tour.ngaycapnhat;
+                ls.ngayketthuc = null;
+                lsgtb.add(ls);
                 MessageBox.Show("Thêm tour thành công");
                 clear();
             }

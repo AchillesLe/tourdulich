@@ -42,8 +42,10 @@
   <ItemGroup>
     <Compile Include="cttqBIZ.cs" />
     <Compile Include="DiaDiemBIZ.cs" />
+    <Compile Include="LichSuGiaTourBIZ.cs" />
     <Compile Include="LoaiTourBIZ.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThongKeDoanhThuBIZ.cs" />
     <Compile Include="TinhThanhBIZ.cs" />
     <Compile Include="TourBIZ.cs" />
   </ItemGroup>

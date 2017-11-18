@@ -65,6 +65,7 @@
     <Compile Include="doandulich.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
+    <Compile Include="doanhthutourdto.cs" />
     <Compile Include="doankhachhang.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
@@ -86,6 +87,7 @@
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
     <Compile Include="khachsandto.cs" />
+    <Compile Include="lichsudto.cs" />
     <Compile Include="lichsugiatour.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>

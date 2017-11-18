@@ -24,9 +24,7 @@ namespace BIZ
 
         public bool update(tour entity)
         {
-            if (validate(entity))
                 return tour.Attach(entity);
-            return false;
         }
 
         public List<tourdto> list()
@@ -37,6 +35,11 @@ namespace BIZ
         public List<string> danhsachtour()
         {
             return tour.GetAll().Select(c => c.tentour).Distinct().ToList();
+        }
+
+        public List<string> danhsachtour1()
+        {
+            return tour.GetAll().Select(c => c.tentour).ToList();
         }
 
         public List<tourdto> timtour(string value)
@@ -50,12 +53,24 @@ namespace BIZ
             catch { return 0; }
         }
 
+        public int laymatour(string value)
+        {
+            return tour.Find(c => c.tentour == value).FirstOrDefault().id;
+        }
+
         public bool find(string value)
         {
             var a = tour.Find(c => c.tentour == value).ToList();
             if (a.Count > 0)
                 return false;
             return true;
+        }
+
+        public tour laytoursuagia(int value)
+        {
+            tour a = new tour();
+            a = tour.Find(c => c.id == value).FirstOrDefault();
+            return a;
         }
 
         public bool validate(tour entity)
@@ -66,5 +81,7 @@ namespace BIZ
                 return true;
             return false;
         }
+
+
     }
 }

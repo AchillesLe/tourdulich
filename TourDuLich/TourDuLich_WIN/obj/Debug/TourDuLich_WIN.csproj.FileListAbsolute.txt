@@ -58,3 +58,7 @@ G:\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.TinhThanh_Form.
 G:\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.Tour_Form.resources
 G:\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.csproj.GenerateResource.Cache
 G:\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.KhachSanVaDiaDiem_Form.resources
+C:\Users\hp\Source\Repos\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.DanhSachTour_Form.resources
+C:\Users\hp\Source\Repos\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.KhachSanVaDiaDiem_Form.resources
+C:\Users\hp\Source\Repos\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.SuaGia_Form.resources
+C:\Users\hp\Source\Repos\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.ThongKeTour_Form.resources

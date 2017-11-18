@@ -18,7 +18,7 @@ namespace MODEL
         public int idtour { get; set; }
         public double giatour { get; set; }
         public System.DateTime ngaybatdau { get; set; }
-        public System.DateTime ngayketthuc { get; set; }
+        public Nullable<System.DateTime> ngayketthuc { get; set; }
     
         public virtual tour tour { get; set; }
     }

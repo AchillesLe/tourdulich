@@ -45,5 +45,11 @@ namespace TourDuLich_WIN
             Tour_Form form = new Tour_Form();
             form.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ThongKeTour_Form form = new ThongKeTour_Form();
+            form.Show();
+        }
     }
 }

@@ -142,7 +142,7 @@
     <Property Name="idtour" Type="Int32" Nullable="false" />
     <Property Name="giatour" Type="Double" Nullable="false" />
     <Property Name="ngaybatdau" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ngayketthuc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ngayketthuc" Type="DateTime" Precision="3" />
     <NavigationProperty Name="tour" Relationship="Self.FK_lichsugiatour_tours" FromRole="lichsugiatour" ToRole="tours" />
   </EntityType>
   <EntityType Name="loaitour">

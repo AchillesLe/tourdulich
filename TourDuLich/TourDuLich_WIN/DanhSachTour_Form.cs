@@ -38,6 +38,19 @@ namespace TourDuLich_WIN
             dataGridView1.Columns[6].Width = 150;
         }
 
+
+        private void sua (object sender, EventArgs e)
+        {
+            try
+            {
+                string matour = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                string giatour = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                SuaGia_Form form = new SuaGia_Form(matour,giatour);
+                form.Show();
+            }
+            catch { }
+        }
+
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -61,6 +74,24 @@ namespace TourDuLich_WIN
             TourBIZ tb = new TourBIZ();
             dataGridView1.DataSource = tb.list();
             dataGridView2.DataSource = null;
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    //Tao menu ngu canh
+                    ContextMenuStrip menu = new ContextMenuStrip();
+                    menu.Items.Add("Sửa giá", null, new EventHandler(sua));
+                    //Di chuyen den dong hien hanh
+                    dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    //hien thi menu
+                    Point pt = dataGridView1.PointToClient(Control.MousePosition);
+                    menu.Show(dataGridView1, pt.X, pt.Y);
+                }
+            }
         }
     }
 }
