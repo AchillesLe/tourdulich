@@ -18,15 +18,8 @@ namespace BIZ
 
         public bool add(diadiem entity)
         {
-            if(validate(entity))
+            if(validate(entity))          
                 return diadiem.Add(entity);
-            return false;
-        }
-
-        public bool update(diadiem entity)
-        {
-            if(validate(entity))
-                return diadiem.Attach(entity);
             return false;
         }
 
@@ -67,6 +60,8 @@ namespace BIZ
         public bool validate(diadiem entity)
         {
             if (entity.tendiadiem.Trim().Length == 0) validatedictionary.Add("TENDIADIEM", "Không được để trống tên địa điểm");
+            if (entity.idtinh == 0) validatedictionary.Add("TENTINH", "Chưa chọn tên tỉnh");
+            if (find(entity.tendiadiem, entity.idtinh) == false) validatedictionary.Add("DATONTAI", "Đã tồn tại địa điểm trong CSDL");
             if (validatedictionary.Count() <= 0)
                 return true;
             return false;

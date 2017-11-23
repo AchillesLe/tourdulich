@@ -12,13 +12,16 @@ namespace MODEL
     using System;
     using System.Collections.Generic;
     
-    public partial class tinhke
+    public partial class chiphibuaan
     {
-        public int id { get; set; }
-        public int idtinhdau { get; set; }
-        public int idtinhcuoi { get; set; }
+        public chiphibuaan()
+        {
+            this.doanbuaans = new HashSet<doanbuaan>();
+        }
     
-        public virtual tinh tinh { get; set; }
-        public virtual tinh tinh1 { get; set; }
+        public int id { get; set; }
+        public string buaan { get; set; }
+    
+        public virtual ICollection<doanbuaan> doanbuaans { get; set; }
     }
 }

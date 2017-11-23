@@ -43,9 +43,10 @@ namespace TourDuLich_WIN
         {
             try
             {
-                string matour = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                string giatour = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                SuaGia_Form form = new SuaGia_Form(matour,giatour);
+                TourBIZ tb = new TourBIZ();
+                tour temp = new tour();
+                temp = tb.timtourtheoma(Int32.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString()));
+                SuaGia_Form form = new SuaGia_Form(temp);
                 form.Show();
             }
             catch { }
@@ -84,7 +85,7 @@ namespace TourDuLich_WIN
                 {
                     //Tao menu ngu canh
                     ContextMenuStrip menu = new ContextMenuStrip();
-                    menu.Items.Add("Sửa giá", null, new EventHandler(sua));
+                    menu.Items.Add("Sửa thông tin", null, new EventHandler(sua));
                     //Di chuyen den dong hien hanh
                     dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
                     //hien thi menu

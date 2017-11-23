@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="chiphibuaan.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
     <Compile Include="ctthamquan.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
@@ -57,9 +60,6 @@
     </Compile>
     <Compile Include="diadiemdto.cs" />
     <Compile Include="doanbuaan.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
-    </Compile>
-    <Compile Include="doanchiphikhac.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
     <Compile Include="doandulich.cs">
@@ -73,6 +73,9 @@
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
     <Compile Include="doannhanvien.cs">
+      <DependentUpon>TourDuLich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="doanphikhac.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
     <Compile Include="doanphuongtien.cs">
@@ -105,13 +108,11 @@
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="suacttqdto.cs" />
     <Compile Include="tinh.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>
     <Compile Include="tinhdto.cs" />
-    <Compile Include="tinhke.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
-    </Compile>
     <Compile Include="tour.cs">
       <DependentUpon>TourDuLich.tt</DependentUpon>
     </Compile>

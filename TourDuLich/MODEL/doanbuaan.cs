@@ -16,12 +16,11 @@ namespace MODEL
     {
         public int id { get; set; }
         public int iddoan { get; set; }
-        public double buasang { get; set; }
-        public double buatrua { get; set; }
-        public double buachieu { get; set; }
-        public double buatoi { get; set; }
+        public int idbuaan { get; set; }
         public System.DateTime ngay { get; set; }
+        public double sotien { get; set; }
     
+        public virtual chiphibuaan chiphibuaan { get; set; }
         public virtual doandulich doandulich { get; set; }
     }
 }

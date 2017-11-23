@@ -36,6 +36,12 @@ namespace TourDuLich_WIN
                     case "TENDIADIEM":
                         errorProvider1.SetError(textBox2, entry.Value);
                         break;
+                    case "TENTINH":
+                        errorProvider1.SetError(comboBox1, entry.Value);
+                        break;
+                    case "DATONTAI":
+                        errorProvider1.SetError(textBox1, entry.Value);
+                        break;
                     default:
                         break;
                 }
@@ -65,41 +71,25 @@ namespace TourDuLich_WIN
 
         private void button1_Click(object sender, EventArgs e)
         {
-            errorProvider1.Clear();
-            if (comboBox1.SelectedItem == null)
-            {
-                MessageBox.Show("Mã tỉnh không tồn tại");
-            }
-            else
-            {
+                errorProvider1.Clear();
                 DiaDiemBIZ ddb = new DiaDiemBIZ();
                 TinhThanhBIZ ttb = new TinhThanhBIZ();
                 diadiem entity = new diadiem();
                 entity.id = Int32.Parse(textBox1.Text);
-                entity.tendiadiem = textBox2.Text.ToUpper();
+                entity.tendiadiem = textBox2.Text;
                 entity.idtinh = ttb.laymatinh(comboBox1.SelectedItem.ToString());
-                if (ddb.find(entity.tendiadiem, entity.idtinh))
+                bool check = ddb.add(entity);
+                if (check)
                 {
-                    bool check = ddb.add(entity);
-                    if (check)
-                    {
-                        MessageBox.Show("Thêm Thành Công");
-                        dataGridView1.DataSource = ddb.list();
-                        clearform();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Thêm Thất Bại");
-                        ViewErrors(ddb.validatedictionary);
-                    }
+                     MessageBox.Show("Thêm Thành Công");
+                     dataGridView1.DataSource = ddb.list();
+                     clearform();
                 }
                 else
                 {
-                    MessageBox.Show("Đã tồn tại địa điểm trong CSDL");
-                    this.ActiveControl = textBox2;
-                    textBox2.SelectAll();
-                }
-            }
+                     MessageBox.Show("Thêm Thất Bại");
+                     ViewErrors(ddb.validatedictionary);
+                }        
         }
 
         private void button3_Click(object sender, EventArgs e)

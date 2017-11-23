@@ -42,6 +42,9 @@ namespace TourDuLich_WIN
                     case "TENLOAI":
                         errorProvider1.SetError(textBox2, entry.Value);
                         break;
+                    case "DATONTAI":
+                        errorProvider1.SetError(textBox1, entry.Value);
+                        break;
                     default:
                         break;
                 }
@@ -65,65 +68,19 @@ namespace TourDuLich_WIN
             loaitour entity = new loaitour();
             entity.id = Int32.Parse(textBox1.Text);
             entity.tenloaitour = textBox2.Text.ToUpper();
-            if (ltb.find(entity.tenloaitour))
+            bool check = ltb.add(entity);
+            if (check)
             {
-                bool check = ltb.add(entity);
-                if (check)
-                {
-                    MessageBox.Show("Thêm Thành Công");
-                    dataGridView1.DataSource = ltb.list();
-                    clearform();
-                }
-                else
-                {
-                    MessageBox.Show("Thêm Thất Bại");
-                    ViewErrors(ltb.validatedictionary);
-                }
+                MessageBox.Show("Thêm Thành Công");
+                dataGridView1.DataSource = ltb.list();
+                clearform();
             }
             else
             {
-                MessageBox.Show("Đã tồn tại loại hình du lịch trong CSDL");
-                this.ActiveControl = textBox2;
-                textBox2.SelectAll();
-            }
-           
+                MessageBox.Show("Thêm Thất Bại");
+                ViewErrors(ltb.validatedictionary);
+            }                
         }
-
-        //private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    textBox1.Text = dataGridView1.SelectedCells[0].Value.ToString();
-        //    textBox2.Text = dataGridView1.SelectedCells[1].Value.ToString();
-        //    button2.Enabled = true;
-        //    button1.Enabled = false;
-        //}
-
-        ////Update
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-        //    LoaiTourBIZ ltb = new LoaiTourBIZ();
-        //    loaitour entity = new loaitour();
-        //    entity.maloai = Int32.Parse(textBox1.Text);
-        //    entity.tenloaitour = textBox2.Text.ToUpper();
-        //    if (ltb.find(entity.tenloaitour))
-        //    {
-        //        bool check = ltb.update(entity);
-        //        if (check)
-        //        {
-        //            MessageBox.Show("Cập nhật thành công");
-        //            dataGridView1.DataSource = ltb.list();
-        //            clearform();
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Cập nhật thất bại");
-        //        }
-        //    }
-        //    else
-        //    {
-        //        textBox2.Focus();
-        //        MessageBox.Show("Đã tồn tại loại hình du lịch trong CSDL");
-        //    }
-        //}
 
         private void button3_Click(object sender, EventArgs e)
         {

@@ -53,6 +53,9 @@ namespace TourDuLich_WIN
                     case "TENTINH":
                         errorProvider1.SetError(textBox2, entry.Value);
                         break;
+                    case "DATONTAI":
+                        errorProvider1.SetError(textBox1, entry.Value);
+                        break;
                     default:
                         break;
                 }
@@ -66,26 +69,17 @@ namespace TourDuLich_WIN
             tinh entity = new tinh();
             entity.id = Int32.Parse(textBox1.Text);
             entity.tentinh = textBox2.Text.ToUpper();
-            if (ttb.find(entity.tentinh))
+            bool check = ttb.add(entity);
+            if (check)
             {
-                bool check = ttb.add(entity);
-                if (check)
-                {
-                    MessageBox.Show("Thêm Thành Công");
-                    dataGridView1.DataSource = ttb.list();
-                    clearform();
-                }
-                else
-                {
-                    MessageBox.Show("Thêm Thất Bại");
-                    ViewErrors(ttb.validatedictionary);
-                }
+                MessageBox.Show("Thêm Thành Công");
+                dataGridView1.DataSource = ttb.list();
+                clearform();
             }
             else
             {
-                MessageBox.Show("Đã tồn tại loại hình du lịch trong CSDL");
-                this.ActiveControl = textBox2;
-                textBox2.SelectAll();
+                MessageBox.Show("Thêm Thất Bại");
+                ViewErrors(ttb.validatedictionary);
             }
         }
 

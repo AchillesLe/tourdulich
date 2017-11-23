@@ -72,18 +72,14 @@ namespace TourDuLich_WIN
                 ThongKeDoanhThuBIZ tkb = new ThongKeDoanhThuBIZ();
                 tungay = dateTimePicker3.Value.Date;
                 denngay = dateTimePicker4.Value.Date.AddDays(1);
-                dataGridView2.DataSource = tkb.thongketheothoigian(tungay, denngay, comboBox2.SelectedItem.ToString());
+                List<doanhthutourdto> listdoanhthu = tkb.thongketheothoigian(tungay, denngay, comboBox2.SelectedItem.ToString());
+                dataGridView2.DataSource = listdoanhthu;
                 dataGridView2.Columns[0].Width = 70;
                 dataGridView2.Columns[1].Width = 170;
                 dataGridView2.Columns[2].Width = 150;
                 dataGridView2.Columns[3].Width = 160;
                 dataGridView2.Columns[4].Width = 160;
-                int tong = 0;
-                for (int i = 0; i < dataGridView2.RowCount; i++)
-                {
-                    tong += Int32.Parse(dataGridView2.Rows[i].Cells[3].Value.ToString());
-                }
-                numericUpDown1.Value = tong;
+                numericUpDown1.Value = Decimal.Parse(tkb.tinhtong(listdoanhthu).ToString());
             }
             else
             {

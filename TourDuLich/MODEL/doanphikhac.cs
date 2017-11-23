@@ -12,10 +12,13 @@ namespace MODEL
     using System;
     using System.Collections.Generic;
     
-    public partial class doanchiphikhac
+    public partial class doanphikhac
     {
         public int id { get; set; }
         public int iddoan { get; set; }
+        public string name { get; set; }
+        public System.DateTime ngay { get; set; }
+        public string note { get; set; }
         public double sotien { get; set; }
     
         public virtual doandulich doandulich { get; set; }

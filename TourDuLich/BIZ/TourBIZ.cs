@@ -24,7 +24,9 @@ namespace BIZ
 
         public bool update(tour entity)
         {
+            if(validate(entity))
                 return tour.Attach(entity);
+            return false;
         }
 
         public List<tourdto> list()
@@ -45,6 +47,11 @@ namespace BIZ
         public List<tourdto> timtour(string value)
         {
             return tour.Find(c => c.tentour == value).Select(c => new tourdto(c)).ToList();
+        }
+
+        public tour timtourtheoma(int value)
+        {
+            return tour.Find(c => c.id == value).FirstOrDefault();
         }
 
         public int getcurrentid()
@@ -75,8 +82,10 @@ namespace BIZ
 
         public bool validate(tour entity)
         {
-            if (entity.diemden == entity.diemdi) validatedictionary.Add("TENTOUR", "Điểm đến không thể giống điểm đi");
+            if (entity.diemden == entity.diemdi) validatedictionary.Add("DIEMDENDIEMDI", "Điểm đến không thể giống điểm đi");
             if (entity.giatour == 0) validatedictionary.Add("GIATOUR", "Chưa nhập giá tour");
+            if (entity.dacdiem.Trim().Length == 0) validatedictionary.Add("DACDIEM", "Chưa nhập đặc điểm tour");
+            if (entity.tentour.Trim().Length == 0) validatedictionary.Add("TENTOUR", "Chưa nhập tên tour");
             if (validatedictionary.Count() <= 0)
                 return true;
             return false;

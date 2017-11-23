@@ -39,14 +39,14 @@ namespace TourDuLich_WIN
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 0;
             comboBox3.SelectedIndex = 0;
-            numericUpDown1.Value = 0;
+            numericUpDown1.Value = 0;           
             richTextBox1.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
+            textBox4.Clear();
             comboBox4.DataSource = null;
-            panel1.Enabled = true;
-            panel2.Enabled = false;
+            comboBox5.DataSource = null;
+            button5.Enabled = false;
             dataGridView1.Rows.Clear();
+            errorProvider1.Clear();
         }
 
         //load combobox
@@ -62,46 +62,20 @@ namespace TourDuLich_WIN
             LoaiTourBIZ ltb = new LoaiTourBIZ();
             List<string> loaitour = ltb.danhsachloaitour();
             comboBox3.DataSource = loaitour;
+            //combobox tinh tham quan
+            DiaDiemBIZ ddb = new DiaDiemBIZ();
+            List<string> tinhthamquan = ttb.danhsachtinh();
+            comboBox5.DataSource = tinhthamquan;
+            //combobox địa điểm tham quan
+            List<string> diadiemtheotinh = ddb.listdiadiemtheotinh(ttb.laymatinh(comboBox5.SelectedItem.ToString()));
+            comboBox4.DataSource = diadiemtheotinh;
         }
         private void Tour_Form_Load(object sender, EventArgs e)
         {
             TourBIZ tb = new TourBIZ();
             loadcombobox();
+            button5.Enabled = false;
             textBox1.Text = (tb.getcurrentid() + 1).ToString();
-            panel2.Enabled = false;
-        }
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (comboBox1.SelectedItem == comboBox2.SelectedItem)
-            {
-                MessageBox.Show("Điểm đến không được trùng với điểm đi");
-            }
-            else
-            {
-                if (numericUpDown1.Value.ToString() == "")
-                {
-                    numericUpDown1.Value = 0;
-                }
-                if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null || comboBox3.SelectedItem == null || numericUpDown1.Value == 0 || richTextBox1.Text == "")
-                {
-                    MessageBox.Show("Chưa điền đầy đủ thông tin");
-                }
-                else
-                {
-                    panel1.Enabled = false;
-                    panel2.Enabled = true;
-                    button5.Enabled = false;
-                    textBox2.Text = comboBox2.SelectedItem.ToString();
-                    textBox3.Text = textBox1.Text;
-                    //combobox địa điểm tham quan
-                    DiaDiemBIZ ddb = new DiaDiemBIZ();
-                    TinhThanhBIZ ttb = new TinhThanhBIZ();
-                    List<string> diadiemtheotinh = ddb.listdiadiemtheotinh(ttb.laymatinh(comboBox2.SelectedItem.ToString()));
-                    comboBox4.DataSource = diadiemtheotinh;
-                }
-            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -157,6 +131,36 @@ namespace TourDuLich_WIN
             }
         }
 
+
+        public void ViewErrors(Dictionary<string, string> Dictionary)
+        {
+            errorProvider1.Clear();
+            foreach (var entry in Dictionary)
+            {
+                switch (entry.Key)
+                {
+                    case "DIEMDENDIEMDI":
+                        errorProvider1.SetError(comboBox1, entry.Value);
+                        errorProvider1.SetError(comboBox2, entry.Value);
+                        break;
+                    case "GIATOUR":
+                        errorProvider1.SetError(numericUpDown1, entry.Value);
+                        break;
+                    case "DACDIEM":
+                        errorProvider1.SetError(richTextBox1, entry.Value);
+                        break;
+                    case "TENTOUR":
+                        errorProvider1.SetError(textBox4, entry.Value);
+                        break;
+                    case "DATONTAI":
+                        errorProvider1.SetError(textBox1, entry.Value);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
         private void button5_Click(object sender, EventArgs e)
         {
             TinhThanhBIZ ttb = new TinhThanhBIZ();
@@ -164,7 +168,7 @@ namespace TourDuLich_WIN
             DiaDiemBIZ ddb = new DiaDiemBIZ();
             TourBIZ tb = new TourBIZ();
             tour tour = new tour();
-            tour.tentour = comboBox1.SelectedItem.ToString() + " - " + comboBox2.SelectedItem.ToString();
+            tour.tentour = textBox4.Text;
             tour.diemden = ttb.laymatinh(comboBox2.SelectedItem.ToString());
             tour.diemdi = ttb.laymatinh(comboBox1.SelectedItem.ToString());
             tour.dacdiem = richTextBox1.Text;
@@ -195,7 +199,7 @@ namespace TourDuLich_WIN
             else
             {
                 MessageBox.Show("Thêm tour thất bại");
-                clear();
+                ViewErrors(tb.validatedictionary);
             }
         }
 
@@ -208,6 +212,22 @@ namespace TourDuLich_WIN
         {
             DanhSachTour_Form form = new DanhSachTour_Form();
             form.Show();
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox4.DataSource != null)
+            {
+                DiaDiemBIZ ddb = new DiaDiemBIZ();
+                TinhThanhBIZ ttb = new TinhThanhBIZ();
+                List<string> diadiemtheotinh = ddb.listdiadiemtheotinh(ttb.laymatinh(comboBox5.SelectedItem.ToString()));
+                comboBox4.DataSource = diadiemtheotinh;
+                comboBox4.Refresh();
+            }
+            else
+            {
+
+            }
         }
     }
 }

@@ -18,8 +18,6 @@ namespace MODEL
         {
             this.diadiems = new HashSet<diadiem>();
             this.khachsans = new HashSet<khachsan>();
-            this.tinhkes = new HashSet<tinhke>();
-            this.tinhkes1 = new HashSet<tinhke>();
             this.tours = new HashSet<tour>();
             this.tours1 = new HashSet<tour>();
         }
@@ -29,8 +27,6 @@ namespace MODEL
     
         public virtual ICollection<diadiem> diadiems { get; set; }
         public virtual ICollection<khachsan> khachsans { get; set; }
-        public virtual ICollection<tinhke> tinhkes { get; set; }
-        public virtual ICollection<tinhke> tinhkes1 { get; set; }
         public virtual ICollection<tour> tours { get; set; }
         public virtual ICollection<tour> tours1 { get; set; }
     }

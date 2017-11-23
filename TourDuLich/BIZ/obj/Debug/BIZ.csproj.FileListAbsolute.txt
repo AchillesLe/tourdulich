@@ -25,3 +25,4 @@ G:\tourdulich\TourDuLich\BIZ\bin\Debug\EntityFramework.xml
 G:\tourdulich\TourDuLich\BIZ\obj\Debug\BIZ.csprojResolveAssemblyReference.cache
 G:\tourdulich\TourDuLich\BIZ\obj\Debug\BIZ.dll
 G:\tourdulich\TourDuLich\BIZ\obj\Debug\BIZ.pdb
+C:\Users\hp\Source\Repos\tourdulich\TourDuLich\BIZ\bin\Debug\BIZ.dll.config

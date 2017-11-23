@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="tourdulichModelStoreContainer" CdmEntityContainer="tourdulichEntities">
+    <EntitySetMapping Name="chiphibuaans">
+      <EntityTypeMapping TypeName="tourdulichModel.chiphibuaan">
+        <MappingFragment StoreEntitySet="chiphibuaan">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="buaan" ColumnName="buaan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ctthamquans">
       <EntityTypeMapping TypeName="tourdulichModel.ctthamquan">
         <MappingFragment StoreEntitySet="ctthamquan">
@@ -24,19 +32,8 @@
         <MappingFragment StoreEntitySet="doanbuaan">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="iddoan" ColumnName="iddoan" />
-          <ScalarProperty Name="buasang" ColumnName="buasang" />
-          <ScalarProperty Name="buatrua" ColumnName="buatrua" />
-          <ScalarProperty Name="buachieu" ColumnName="buachieu" />
-          <ScalarProperty Name="buatoi" ColumnName="buatoi" />
+          <ScalarProperty Name="idbuaan" ColumnName="idbuaan" />
           <ScalarProperty Name="ngay" ColumnName="ngay" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="doanchiphikhacs">
-      <EntityTypeMapping TypeName="tourdulichModel.doanchiphikhac">
-        <MappingFragment StoreEntitySet="doanchiphikhac">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="iddoan" ColumnName="iddoan" />
           <ScalarProperty Name="sotien" ColumnName="sotien" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -56,6 +53,7 @@
           <ScalarProperty Name="tongtientour" ColumnName="tongtientour" />
           <ScalarProperty Name="tongtiendoan" ColumnName="tongtiendoan" />
           <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+          <ScalarProperty Name="trangthai" ColumnName="trangthai" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -65,6 +63,7 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="iddoan" ColumnName="iddoan" />
           <ScalarProperty Name="idkhachhang" ColumnName="idkhachhang" />
+          <ScalarProperty Name="sotien" ColumnName="sotien" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -74,8 +73,8 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="iddoan" ColumnName="iddoan" />
           <ScalarProperty Name="idkhachsan" ColumnName="idkhachsan" />
-          <ScalarProperty Name="sotien" ColumnName="sotien" />
           <ScalarProperty Name="ngayden" ColumnName="ngayden" />
+          <ScalarProperty Name="sotien" ColumnName="sotien" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -89,14 +88,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="doanphikhacs">
+      <EntityTypeMapping TypeName="tourdulichModel.doanphikhac">
+        <MappingFragment StoreEntitySet="doanphikhac">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="iddoan" ColumnName="iddoan" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ngay" ColumnName="ngay" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="sotien" ColumnName="sotien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="doanphuongtiens">
       <EntityTypeMapping TypeName="tourdulichModel.doanphuongtien">
         <MappingFragment StoreEntitySet="doanphuongtien">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="iddoan" ColumnName="iddoan" />
           <ScalarProperty Name="idphuongtien" ColumnName="idphuongtien" />
-          <ScalarProperty Name="sotien" ColumnName="sotien" />
           <ScalarProperty Name="ngay" ColumnName="ngay" />
+          <ScalarProperty Name="sotien" ColumnName="sotien" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -161,15 +172,6 @@
         <MappingFragment StoreEntitySet="phuongtiens">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="tenphuongtien" ColumnName="tenphuongtien" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tinhkes">
-      <EntityTypeMapping TypeName="tourdulichModel.tinhke">
-        <MappingFragment StoreEntitySet="tinhke">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="idtinhdau" ColumnName="idtinhdau" />
-          <ScalarProperty Name="idtinhcuoi" ColumnName="idtinhcuoi" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
