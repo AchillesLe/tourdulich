@@ -52,7 +52,7 @@
           <Property Name="tongtienphuongtien" Type="float" Nullable="false" />
           <Property Name="tongtienchiphikhac" Type="float" Nullable="false" />
           <Property Name="tongtientour" Type="float" Nullable="false" />
-          <Property Name="tongtiendoan" Type="float" Nullable="false" />
+          <Property Name="tienve" Type="float" Nullable="false" />
           <Property Name="ngaytao" Type="datetime" Nullable="false" />
           <Property Name="trangthai" Type="int" Nullable="false" />
         </EntityType>
@@ -113,7 +113,7 @@
           <Property Name="tenkhachhang" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="sodienthoai" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="cmt" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="diachi" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="100" />
           <Property Name="sex" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="khachsans">
@@ -599,7 +599,7 @@
           <Property Name="tongtienphuongtien" Type="Double" Nullable="false" />
           <Property Name="tongtienchiphikhac" Type="Double" Nullable="false" />
           <Property Name="tongtientour" Type="Double" Nullable="false" />
-          <Property Name="tongtiendoan" Type="Double" Nullable="false" />
+          <Property Name="tienve" Type="Double" Nullable="false" />
           <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="trangthai" Type="Int32" Nullable="false" />
           <NavigationProperty Name="doanbuaans" Relationship="Self.FK_doanbuaan_doan" FromRole="doandulichs" ToRole="doanbuaan" />
@@ -677,7 +677,7 @@
           <Property Name="tenkhachhang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="sodienthoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="cmt" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="sex" Type="Int32" Nullable="false" />
           <NavigationProperty Name="doankhachhangs" Relationship="Self.FK_doankhachhang_khachhang" FromRole="khachhangs" ToRole="doankhachhang" />
         </EntityType>
@@ -1178,7 +1178,7 @@
                 <ScalarProperty Name="tongtienphuongtien" ColumnName="tongtienphuongtien" />
                 <ScalarProperty Name="tongtienchiphikhac" ColumnName="tongtienchiphikhac" />
                 <ScalarProperty Name="tongtientour" ColumnName="tongtientour" />
-                <ScalarProperty Name="tongtiendoan" ColumnName="tongtiendoan" />
+                <ScalarProperty Name="tienve" ColumnName="tienve" />
                 <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
                 <ScalarProperty Name="trangthai" ColumnName="trangthai" />
               </MappingFragment>

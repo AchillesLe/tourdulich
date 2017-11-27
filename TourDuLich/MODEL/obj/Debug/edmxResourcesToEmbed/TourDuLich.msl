@@ -51,7 +51,7 @@
           <ScalarProperty Name="tongtienphuongtien" ColumnName="tongtienphuongtien" />
           <ScalarProperty Name="tongtienchiphikhac" ColumnName="tongtienchiphikhac" />
           <ScalarProperty Name="tongtientour" ColumnName="tongtientour" />
-          <ScalarProperty Name="tongtiendoan" ColumnName="tongtiendoan" />
+          <ScalarProperty Name="tienve" ColumnName="tienve" />
           <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
           <ScalarProperty Name="trangthai" ColumnName="trangthai" />
         </MappingFragment>

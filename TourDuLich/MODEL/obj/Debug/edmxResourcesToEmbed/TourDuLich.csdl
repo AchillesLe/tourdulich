@@ -54,7 +54,7 @@
     <Property Name="tongtienphuongtien" Type="Double" Nullable="false" />
     <Property Name="tongtienchiphikhac" Type="Double" Nullable="false" />
     <Property Name="tongtientour" Type="Double" Nullable="false" />
-    <Property Name="tongtiendoan" Type="Double" Nullable="false" />
+    <Property Name="tienve" Type="Double" Nullable="false" />
     <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="trangthai" Type="Int32" Nullable="false" />
     <NavigationProperty Name="doanbuaans" Relationship="Self.FK_doanbuaan_doan" FromRole="doandulichs" ToRole="doanbuaan" />
@@ -132,7 +132,7 @@
     <Property Name="tenkhachhang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="sodienthoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="cmt" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="sex" Type="Int32" Nullable="false" />
     <NavigationProperty Name="doankhachhangs" Relationship="Self.FK_doankhachhang_khachhang" FromRole="khachhangs" ToRole="doankhachhang" />
   </EntityType>

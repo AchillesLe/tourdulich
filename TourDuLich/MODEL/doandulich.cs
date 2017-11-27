@@ -34,7 +34,7 @@ namespace MODEL
         public double tongtienphuongtien { get; set; }
         public double tongtienchiphikhac { get; set; }
         public double tongtientour { get; set; }
-        public double tongtiendoan { get; set; }
+        public double tienve { get; set; }
         public System.DateTime ngaytao { get; set; }
         public int trangthai { get; set; }
     

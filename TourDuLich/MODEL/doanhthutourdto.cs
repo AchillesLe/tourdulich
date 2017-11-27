@@ -24,7 +24,7 @@ namespace MODEL
             matour = entity.idtour;
             tentour = entity.tour.tentour;
             giatour = entity.tongtientour;
-            tongthu = entity.tongtiendoan;
+            tongthu = entity.tienve;
             ngaytao = entity.ngaytao;
         }
     }

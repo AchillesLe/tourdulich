@@ -47,7 +47,7 @@
     <Property Name="tongtienphuongtien" Type="float" Nullable="false" />
     <Property Name="tongtienchiphikhac" Type="float" Nullable="false" />
     <Property Name="tongtientour" Type="float" Nullable="false" />
-    <Property Name="tongtiendoan" Type="float" Nullable="false" />
+    <Property Name="tienve" Type="float" Nullable="false" />
     <Property Name="ngaytao" Type="datetime" Nullable="false" />
     <Property Name="trangthai" Type="int" Nullable="false" />
   </EntityType>
@@ -108,7 +108,7 @@
     <Property Name="tenkhachhang" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="sodienthoai" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="cmt" Type="varchar" MaxLength="15" Nullable="false" />
-    <Property Name="diachi" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="100" />
     <Property Name="sex" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="khachsans">
