@@ -17,8 +17,8 @@ namespace MODEL
         public int id { get; set; }
         public int iddoan { get; set; }
         public int idkhachsan { get; set; }
-        public double sotien { get; set; }
         public System.DateTime ngayden { get; set; }
+        public double sotien { get; set; }
     
         public virtual doandulich doandulich { get; set; }
         public virtual khachsan khachsan { get; set; }

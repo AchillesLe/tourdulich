@@ -17,6 +17,7 @@ namespace MODEL
         public int id { get; set; }
         public int iddoan { get; set; }
         public int idkhachhang { get; set; }
+        public double sotien { get; set; }
     
         public virtual doandulich doandulich { get; set; }
         public virtual khachhang khachhang { get; set; }

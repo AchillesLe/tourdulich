@@ -17,10 +17,10 @@ namespace MODEL
         public doandulich()
         {
             this.doanbuaans = new HashSet<doanbuaan>();
-            this.doanchiphikhacs = new HashSet<doanchiphikhac>();
             this.doankhachhangs = new HashSet<doankhachhang>();
             this.doankhachsans = new HashSet<doankhachsan>();
             this.doannhanviens = new HashSet<doannhanvien>();
+            this.doanphikhacs = new HashSet<doanphikhac>();
             this.doanphuongtiens = new HashSet<doanphuongtien>();
         }
     
@@ -34,15 +34,16 @@ namespace MODEL
         public double tongtienphuongtien { get; set; }
         public double tongtienchiphikhac { get; set; }
         public double tongtientour { get; set; }
-        public double tongtiendoan { get; set; }
+        public double tienve { get; set; }
         public System.DateTime ngaytao { get; set; }
+        public int trangthai { get; set; }
     
         public virtual ICollection<doanbuaan> doanbuaans { get; set; }
-        public virtual ICollection<doanchiphikhac> doanchiphikhacs { get; set; }
         public virtual tour tour { get; set; }
         public virtual ICollection<doankhachhang> doankhachhangs { get; set; }
         public virtual ICollection<doankhachsan> doankhachsans { get; set; }
         public virtual ICollection<doannhanvien> doannhanviens { get; set; }
+        public virtual ICollection<doanphikhac> doanphikhacs { get; set; }
         public virtual ICollection<doanphuongtien> doanphuongtiens { get; set; }
     }
 }

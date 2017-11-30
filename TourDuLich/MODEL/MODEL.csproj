@@ -48,112 +48,112 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="chiphibuaan.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
     <Compile Include="ctthamquan.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="cttqdto.cs" />
     <Compile Include="diadiem.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="diadiemdto.cs" />
     <Compile Include="doanbuaan.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
-    </Compile>
-    <Compile Include="doanchiphikhac.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="doandulich.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="doanhthutourdto.cs" />
     <Compile Include="doankhachhang.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="doankhachsan.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="doannhanvien.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
+    </Compile>
+    <Compile Include="doanphikhac.cs">
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="doanphuongtien.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="GenericRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="khachhang.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="khachsan.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="khachsandto.cs" />
     <Compile Include="lichsudto.cs" />
     <Compile Include="lichsugiatour.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="loaitour.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="loaitourdto.cs" />
     <Compile Include="nhanvien.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="nhiemvu.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="phuongtien.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tinh.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="tinhdto.cs" />
-    <Compile Include="tinhke.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
-    </Compile>
     <Compile Include="tour.cs">
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="tourdto.cs" />
-    <Compile Include="TourDuLich.Context.cs">
+    <Compile Include="tourdulich.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TourDuLich.Context.tt</DependentUpon>
+      <DependentUpon>tourdulich.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="TourDuLich.cs">
+    <Compile Include="tourdulich.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TourDuLich.tt</DependentUpon>
+      <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
-    <Compile Include="TourDuLich.Designer.cs">
+    <Compile Include="tourdulich.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TourDuLich.edmx</DependentUpon>
+      <DependentUpon>tourdulich.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="database\DBtourdulich_3.sql" />
-    <Content Include="TourDuLich.Context.tt">
+    <Content Include="tourdulich.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TourDuLich.edmx</DependentUpon>
-      <LastGenOutput>TourDuLich.Context.cs</LastGenOutput>
+      <DependentUpon>tourdulich.edmx</DependentUpon>
+      <LastGenOutput>tourdulich.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="TourDuLich.tt">
+    <Content Include="tourdulich.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TourDuLich.edmx</DependentUpon>
-      <LastGenOutput>TourDuLich.cs</LastGenOutput>
+      <DependentUpon>tourdulich.edmx</DependentUpon>
+      <LastGenOutput>tourdulich.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="TourDuLich.edmx">
+    <EntityDeploy Include="tourdulich.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TourDuLich.Designer.cs</LastGenOutput>
+      <LastGenOutput>tourdulich.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="TourDuLich.edmx.diagram">
-      <DependentUpon>TourDuLich.edmx</DependentUpon>
+    <None Include="tourdulich.edmx.diagram">
+      <DependentUpon>tourdulich.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="tourdulichModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="chiphibuaan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="buaan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="doanbuaans" Relationship="Self.FK_doanbuaan_chiphibuaan" FromRole="chiphibuaan" ToRole="doanbuaan" />
+  </EntityType>
   <EntityType Name="ctthamquan">
     <Key>
       <PropertyRef Name="id" />
@@ -26,21 +34,11 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="iddoan" Type="Int32" Nullable="false" />
-    <Property Name="buasang" Type="Double" Nullable="false" />
-    <Property Name="buatrua" Type="Double" Nullable="false" />
-    <Property Name="buachieu" Type="Double" Nullable="false" />
-    <Property Name="buatoi" Type="Double" Nullable="false" />
+    <Property Name="idbuaan" Type="Int32" Nullable="false" />
     <Property Name="ngay" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="doandulich" Relationship="Self.FK_doanbuaan_doan" FromRole="doanbuaan" ToRole="doandulichs" />
-  </EntityType>
-  <EntityType Name="doanchiphikhac">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="iddoan" Type="Int32" Nullable="false" />
     <Property Name="sotien" Type="Double" Nullable="false" />
-    <NavigationProperty Name="doandulich" Relationship="Self.FK_doanchiphikhac_doan" FromRole="doanchiphikhac" ToRole="doandulichs" />
+    <NavigationProperty Name="chiphibuaan" Relationship="Self.FK_doanbuaan_chiphibuaan" FromRole="doanbuaan" ToRole="chiphibuaan" />
+    <NavigationProperty Name="doandulich" Relationship="Self.FK_doanbuaan_doan" FromRole="doanbuaan" ToRole="doandulichs" />
   </EntityType>
   <EntityType Name="doandulich">
     <Key>
@@ -56,14 +54,15 @@
     <Property Name="tongtienphuongtien" Type="Double" Nullable="false" />
     <Property Name="tongtienchiphikhac" Type="Double" Nullable="false" />
     <Property Name="tongtientour" Type="Double" Nullable="false" />
-    <Property Name="tongtiendoan" Type="Double" Nullable="false" />
+    <Property Name="tienve" Type="Double" Nullable="false" />
     <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="trangthai" Type="Int32" Nullable="false" />
     <NavigationProperty Name="doanbuaans" Relationship="Self.FK_doanbuaan_doan" FromRole="doandulichs" ToRole="doanbuaan" />
-    <NavigationProperty Name="doanchiphikhacs" Relationship="Self.FK_doanchiphikhac_doan" FromRole="doandulichs" ToRole="doanchiphikhac" />
     <NavigationProperty Name="tour" Relationship="Self.FK_doandulichs_tours" FromRole="doandulichs" ToRole="tours" />
     <NavigationProperty Name="doankhachhangs" Relationship="Self.FK_doankhachhang_doandulichs" FromRole="doandulichs" ToRole="doankhachhang" />
     <NavigationProperty Name="doankhachsans" Relationship="Self.FK_doankhachsan_doandulichs" FromRole="doandulichs" ToRole="doankhachsan" />
     <NavigationProperty Name="doannhanviens" Relationship="Self.FK_doannhanvien_doandulichs" FromRole="doandulichs" ToRole="doannhanvien" />
+    <NavigationProperty Name="doanphikhacs" Relationship="Self.FK_doanphikhac_doan" FromRole="doandulichs" ToRole="doanphikhac" />
     <NavigationProperty Name="doanphuongtiens" Relationship="Self.FK_doanphuongtien_doan" FromRole="doandulichs" ToRole="doanphuongtien" />
   </EntityType>
   <EntityType Name="doankhachhang">
@@ -73,6 +72,7 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="iddoan" Type="Int32" Nullable="false" />
     <Property Name="idkhachhang" Type="Int32" Nullable="false" />
+    <Property Name="sotien" Type="Double" Nullable="false" />
     <NavigationProperty Name="doandulich" Relationship="Self.FK_doankhachhang_doandulichs" FromRole="doankhachhang" ToRole="doandulichs" />
     <NavigationProperty Name="khachhang" Relationship="Self.FK_doankhachhang_khachhang" FromRole="doankhachhang" ToRole="khachhangs" />
   </EntityType>
@@ -83,8 +83,8 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="iddoan" Type="Int32" Nullable="false" />
     <Property Name="idkhachsan" Type="Int32" Nullable="false" />
-    <Property Name="sotien" Type="Double" Nullable="false" />
     <Property Name="ngayden" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="sotien" Type="Double" Nullable="false" />
     <NavigationProperty Name="doandulich" Relationship="Self.FK_doankhachsan_doandulichs" FromRole="doankhachsan" ToRole="doandulichs" />
     <NavigationProperty Name="khachsan" Relationship="Self.FK_doankhachsan_khachsan" FromRole="doankhachsan" ToRole="khachsans" />
   </EntityType>
@@ -100,6 +100,18 @@
     <NavigationProperty Name="nhanvien" Relationship="Self.FK_doannhanvien_nhanviens" FromRole="doannhanvien" ToRole="nhanviens" />
     <NavigationProperty Name="nhiemvu" Relationship="Self.FK_doannhanvien_nhiemvu" FromRole="doannhanvien" ToRole="nhiemvus" />
   </EntityType>
+  <EntityType Name="doanphikhac">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="iddoan" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ngay" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sotien" Type="Double" Nullable="false" />
+    <NavigationProperty Name="doandulich" Relationship="Self.FK_doanphikhac_doan" FromRole="doanphikhac" ToRole="doandulichs" />
+  </EntityType>
   <EntityType Name="doanphuongtien">
     <Key>
       <PropertyRef Name="id" />
@@ -107,8 +119,8 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="iddoan" Type="Int32" Nullable="false" />
     <Property Name="idphuongtien" Type="Int32" Nullable="false" />
-    <Property Name="sotien" Type="Double" Nullable="false" />
     <Property Name="ngay" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="sotien" Type="Double" Nullable="false" />
     <NavigationProperty Name="doandulich" Relationship="Self.FK_doanphuongtien_doan" FromRole="doanphuongtien" ToRole="doandulichs" />
     <NavigationProperty Name="phuongtien" Relationship="Self.FK_doanphuongtien_phuongtien" FromRole="doanphuongtien" ToRole="phuongtiens" />
   </EntityType>
@@ -120,7 +132,7 @@
     <Property Name="tenkhachhang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="sodienthoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="cmt" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="sex" Type="Int32" Nullable="false" />
     <NavigationProperty Name="doankhachhangs" Relationship="Self.FK_doankhachhang_khachhang" FromRole="khachhangs" ToRole="doankhachhang" />
   </EntityType>
@@ -174,18 +186,8 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="tenphuongtien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tenphuongtien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="doanphuongtiens" Relationship="Self.FK_doanphuongtien_phuongtien" FromRole="phuongtiens" ToRole="doanphuongtien" />
-  </EntityType>
-  <EntityType Name="tinhke">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="idtinhdau" Type="Int32" Nullable="false" />
-    <Property Name="idtinhcuoi" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="tinh" Relationship="Self.FK_tinhke_tinh_1" FromRole="tinhke" ToRole="tinhs" />
-    <NavigationProperty Name="tinh1" Relationship="Self.FK_tinhke_tinh_2" FromRole="tinhke" ToRole="tinhs" />
   </EntityType>
   <EntityType Name="tinh">
     <Key>
@@ -195,8 +197,6 @@
     <Property Name="tentinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="diadiems" Relationship="Self.FK_diadiems_tinhs" FromRole="tinhs" ToRole="diadiems" />
     <NavigationProperty Name="khachsans" Relationship="Self.FK_khachsans_tinhs" FromRole="tinhs" ToRole="khachsans" />
-    <NavigationProperty Name="tinhkes" Relationship="Self.FK_tinhke_tinh_1" FromRole="tinhs" ToRole="tinhke" />
-    <NavigationProperty Name="tinhkes1" Relationship="Self.FK_tinhke_tinh_2" FromRole="tinhs" ToRole="tinhke" />
     <NavigationProperty Name="tours" Relationship="Self.FK_tours_tinh_1" FromRole="tinhs" ToRole="tours" />
     <NavigationProperty Name="tours1" Relationship="Self.FK_tours_tinh_2" FromRole="tinhs" ToRole="tours" />
   </EntityType>
@@ -220,6 +220,18 @@
     <NavigationProperty Name="tinh" Relationship="Self.FK_tours_tinh_1" FromRole="tours" ToRole="tinhs" />
     <NavigationProperty Name="tinh1" Relationship="Self.FK_tours_tinh_2" FromRole="tours" ToRole="tinhs" />
   </EntityType>
+  <Association Name="FK_doanbuaan_chiphibuaan">
+    <End Role="chiphibuaan" Type="Self.chiphibuaan" Multiplicity="1" />
+    <End Role="doanbuaan" Type="Self.doanbuaan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="chiphibuaan">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="doanbuaan">
+        <PropertyRef Name="idbuaan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ctthamquan_diadiem">
     <End Role="diadiems" Type="Self.diadiem" Multiplicity="1" />
     <End Role="ctthamquan" Type="Self.ctthamquan" Multiplicity="*" />
@@ -268,18 +280,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_doanchiphikhac_doan">
-    <End Role="doandulichs" Type="Self.doandulich" Multiplicity="1" />
-    <End Role="doanchiphikhac" Type="Self.doanchiphikhac" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="doandulichs">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="doanchiphikhac">
-        <PropertyRef Name="iddoan" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_doandulichs_tours">
     <End Role="tours" Type="Self.tour" Multiplicity="1" />
     <End Role="doandulichs" Type="Self.doandulich" Multiplicity="*" />
@@ -324,6 +324,18 @@
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="doannhanvien">
+        <PropertyRef Name="iddoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_doanphikhac_doan">
+    <End Role="doandulichs" Type="Self.doandulich" Multiplicity="1" />
+    <End Role="doanphikhac" Type="Self.doanphikhac" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="doandulichs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="doanphikhac">
         <PropertyRef Name="iddoan" />
       </Dependent>
     </ReferentialConstraint>
@@ -436,30 +448,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tinhke_tinh_1">
-    <End Role="tinhs" Type="Self.tinh" Multiplicity="1" />
-    <End Role="tinhke" Type="Self.tinhke" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tinhs">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="tinhke">
-        <PropertyRef Name="idtinhdau" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tinhke_tinh_2">
-    <End Role="tinhs" Type="Self.tinh" Multiplicity="1" />
-    <End Role="tinhke" Type="Self.tinhke" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tinhs">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="tinhke">
-        <PropertyRef Name="idtinhcuoi" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_tours_tinh_1">
     <End Role="tinhs" Type="Self.tinh" Multiplicity="1" />
     <End Role="tours" Type="Self.tour" Multiplicity="*" />
@@ -484,15 +472,16 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="tourdulichEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="chiphibuaans" EntityType="Self.chiphibuaan" />
     <EntitySet Name="ctthamquans" EntityType="Self.ctthamquan" />
     <EntitySet Name="diadiems" EntityType="Self.diadiem" />
     <EntitySet Name="doanbuaans" EntityType="Self.doanbuaan" />
-    <EntitySet Name="doanchiphikhacs" EntityType="Self.doanchiphikhac" />
     <EntitySet Name="doandulichs" EntityType="Self.doandulich" />
     <EntitySet Name="doankhachhangs" EntityType="Self.doankhachhang" />
     <EntitySet Name="doankhachsans" EntityType="Self.doankhachsan" />
     <EntitySet Name="doannhanviens" EntityType="Self.doannhanvien" />
+    <EntitySet Name="doanphikhacs" EntityType="Self.doanphikhac" />
     <EntitySet Name="doanphuongtiens" EntityType="Self.doanphuongtien" />
     <EntitySet Name="khachhangs" EntityType="Self.khachhang" />
     <EntitySet Name="khachsans" EntityType="Self.khachsan" />
@@ -501,9 +490,12 @@
     <EntitySet Name="nhanviens" EntityType="Self.nhanvien" />
     <EntitySet Name="nhiemvus" EntityType="Self.nhiemvu" />
     <EntitySet Name="phuongtiens" EntityType="Self.phuongtien" />
-    <EntitySet Name="tinhkes" EntityType="Self.tinhke" />
     <EntitySet Name="tinhs" EntityType="Self.tinh" />
     <EntitySet Name="tours" EntityType="Self.tour" />
+    <AssociationSet Name="FK_doanbuaan_chiphibuaan" Association="Self.FK_doanbuaan_chiphibuaan">
+      <End Role="chiphibuaan" EntitySet="chiphibuaans" />
+      <End Role="doanbuaan" EntitySet="doanbuaans" />
+    </AssociationSet>
     <AssociationSet Name="FK_ctthamquan_diadiem" Association="Self.FK_ctthamquan_diadiem">
       <End Role="diadiems" EntitySet="diadiems" />
       <End Role="ctthamquan" EntitySet="ctthamquans" />
@@ -520,10 +512,6 @@
       <End Role="doandulichs" EntitySet="doandulichs" />
       <End Role="doanbuaan" EntitySet="doanbuaans" />
     </AssociationSet>
-    <AssociationSet Name="FK_doanchiphikhac_doan" Association="Self.FK_doanchiphikhac_doan">
-      <End Role="doandulichs" EntitySet="doandulichs" />
-      <End Role="doanchiphikhac" EntitySet="doanchiphikhacs" />
-    </AssociationSet>
     <AssociationSet Name="FK_doandulichs_tours" Association="Self.FK_doandulichs_tours">
       <End Role="tours" EntitySet="tours" />
       <End Role="doandulichs" EntitySet="doandulichs" />
@@ -539,6 +527,10 @@
     <AssociationSet Name="FK_doannhanvien_doandulichs" Association="Self.FK_doannhanvien_doandulichs">
       <End Role="doandulichs" EntitySet="doandulichs" />
       <End Role="doannhanvien" EntitySet="doannhanviens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_doanphikhac_doan" Association="Self.FK_doanphikhac_doan">
+      <End Role="doandulichs" EntitySet="doandulichs" />
+      <End Role="doanphikhac" EntitySet="doanphikhacs" />
     </AssociationSet>
     <AssociationSet Name="FK_doanphuongtien_doan" Association="Self.FK_doanphuongtien_doan">
       <End Role="doandulichs" EntitySet="doandulichs" />
@@ -575,14 +567,6 @@
     <AssociationSet Name="FK_tours_loaitour" Association="Self.FK_tours_loaitour">
       <End Role="loaitours" EntitySet="loaitours" />
       <End Role="tours" EntitySet="tours" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tinhke_tinh_1" Association="Self.FK_tinhke_tinh_1">
-      <End Role="tinhs" EntitySet="tinhs" />
-      <End Role="tinhke" EntitySet="tinhkes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tinhke_tinh_2" Association="Self.FK_tinhke_tinh_2">
-      <End Role="tinhs" EntitySet="tinhs" />
-      <End Role="tinhke" EntitySet="tinhkes" />
     </AssociationSet>
     <AssociationSet Name="FK_tours_tinh_1" Association="Self.FK_tours_tinh_1">
       <End Role="tinhs" EntitySet="tinhs" />

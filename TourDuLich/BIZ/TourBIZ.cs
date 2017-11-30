@@ -81,7 +81,15 @@ namespace BIZ
                 return true;
             return false;
         }
-
-
+        //Bảo
+        public Dictionary<int, string> Select()
+        {
+            Dictionary<int, string> select = tour.GetQuery().Select(c => new { c.id, c.tentour }).ToDictionary(x => x.id, x => x.tentour);
+            return select;
+        }
+         public tour findEntry(int id)
+        {
+            return tour.Find(x=>x.id==id).FirstOrDefault();
+        }
     }
 }

@@ -25,14 +25,15 @@ namespace MODEL
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<chiphibuaan> chiphibuaans { get; set; }
         public DbSet<ctthamquan> ctthamquans { get; set; }
         public DbSet<diadiem> diadiems { get; set; }
         public DbSet<doanbuaan> doanbuaans { get; set; }
-        public DbSet<doanchiphikhac> doanchiphikhacs { get; set; }
         public DbSet<doandulich> doandulichs { get; set; }
         public DbSet<doankhachhang> doankhachhangs { get; set; }
         public DbSet<doankhachsan> doankhachsans { get; set; }
         public DbSet<doannhanvien> doannhanviens { get; set; }
+        public DbSet<doanphikhac> doanphikhacs { get; set; }
         public DbSet<doanphuongtien> doanphuongtiens { get; set; }
         public DbSet<khachhang> khachhangs { get; set; }
         public DbSet<khachsan> khachsans { get; set; }
@@ -41,7 +42,6 @@ namespace MODEL
         public DbSet<nhanvien> nhanviens { get; set; }
         public DbSet<nhiemvu> nhiemvus { get; set; }
         public DbSet<phuongtien> phuongtiens { get; set; }
-        public DbSet<tinhke> tinhkes { get; set; }
         public DbSet<tinh> tinhs { get; set; }
         public DbSet<tour> tours { get; set; }
     }
