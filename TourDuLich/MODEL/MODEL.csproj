@@ -108,6 +108,7 @@
       <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="suacttqdto.cs" />
     <Compile Include="tinh.cs">
       <DependentUpon>tourdulich.tt</DependentUpon>
     </Compile>

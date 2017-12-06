@@ -15,7 +15,7 @@ namespace MODEL
         [System.ComponentModel.DisplayName("Giá tour")]
         public double giatour { get; set; }
         [System.ComponentModel.DisplayName("Tổng thu")]
-        public double tienve { get; set; }
+        public double tongthu { get; set; }
         [System.ComponentModel.DisplayName("Ngày tạo")]
         public Nullable<System.DateTime> ngaytao { get; set; }
 
@@ -24,7 +24,7 @@ namespace MODEL
             matour = entity.idtour;
             tentour = entity.tour.tentour;
             giatour = entity.tongtientour;
-            tienve = entity.tienve;
+            tongthu = entity.tienve;
             ngaytao = entity.ngaytao;
         }
     }
