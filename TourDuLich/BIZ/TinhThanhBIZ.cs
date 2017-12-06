@@ -17,18 +17,14 @@ namespace BIZ
             tinhrp = new GenericRepository<tinh>();
             ksrp = new GenericRepository<khachsan>();
         }
+
         public bool add(tinh entity)
         {
             if(validate(entity))
              return tinhrp.Add(entity);
             return false;
         }
-        public bool update(tinh entity)
-        {
-            if(validate(entity))
-             return tinhrp.Attach(entity);
-            return false;
-        }
+
         public List<tinhdto> list()
         {
             return tinhrp.GetAll().Select(c => new tinhdto(c)).ToList();
@@ -60,9 +56,16 @@ namespace BIZ
         {
             return tinhrp.Find(c => c.tentinh == value).FirstOrDefault().id;
         }
+
+        public string laytentinh(int value)
+        {
+            return tinhrp.Find(c => c.id == value).FirstOrDefault().tentinh;
+        }
+
         public bool validate(tinh entity)
         {
             if (entity.tentinh.Trim().Length == 0) validatedictionary.Add("TENTINH", "Không được để trống tên tỉnh");
+            if (find(entity.tentinh) == false) validatedictionary.Add("DATONTAI", "Đã tồn tại tỉnh trong CSDL");
             if (validatedictionary.Count() <= 0)
                 return true;
             return false;

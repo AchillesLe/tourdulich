@@ -10,7 +10,6 @@ namespace BIZ
     public class LichSuGiaTourBIZ
     {
         public IRepository<lichsugiatour> lichsu;
-        public Dictionary<string, string> validatedictionary = new Dictionary<string, string>();
         public LichSuGiaTourBIZ()
         {
             lichsu = new GenericRepository<lichsugiatour>();
@@ -18,12 +17,29 @@ namespace BIZ
 
         public bool add(lichsugiatour entity)
         {
-                return lichsu.Add(entity);
+            return lichsu.Add(entity);
         }
 
         public bool update(lichsugiatour entity)
         {
-                return lichsu.Attach(entity);
+            return lichsu.Attach(entity);
+        }
+
+        public void capnhatgiatour(tour tourcapnhatgia)
+        {
+            lichsugiatour lsgt = new lichsugiatour();
+            lsgt = find(tourcapnhatgia.id);
+            if (lsgt.giatour != tourcapnhatgia.giatour)
+            {
+                lsgt.ngayketthuc = tourcapnhatgia.ngaycapnhat;
+                update(lsgt);
+                lichsugiatour ls = new lichsugiatour();
+                ls.idtour = tourcapnhatgia.id;
+                ls.giatour = tourcapnhatgia.giatour;
+                ls.ngaybatdau = tourcapnhatgia.ngaycapnhat;
+                ls.ngayketthuc = null;
+                add(ls);
+            }
         }
 
         public lichsugiatour find(int value)

@@ -23,13 +23,6 @@ namespace BIZ
             return false;
         }
 
-        public bool update(loaitour entity)
-        {
-            if(validate(entity))
-                return loaitour.Attach(entity);
-            return false;
-        }
-
         public List<loaitourdto> list()
         {
             return loaitour.GetAll().Select(c => new loaitourdto(c)).ToList();
@@ -62,6 +55,7 @@ namespace BIZ
         public bool validate(loaitour entity)
         {
             if (entity.tenloaitour.Trim().Length == 0) validatedictionary.Add("TENLOAI", "Không được để trống tên loại tour");
+            if (find(entity.tenloaitour) == false) validatedictionary.Add("DATONTAI", "Đã tồn tại địa điểm trong CSDL");
             if (validatedictionary.Count() <= 0)
                 return true;
             return false;
