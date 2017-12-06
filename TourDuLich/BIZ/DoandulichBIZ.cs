@@ -67,5 +67,10 @@ namespace BIZ
         {
             return doandulich.GetQuery().Where(x => x.idtour == id).Where(x => x.ngaykhoihanh >= start).Where(x => x.ngayketthuc <= end).ToList();
         }
+        //Khang
+        public List<doandulich> GetByTourId(int id)
+        {
+            return doandulich.GetQuery().Where(x => x.idtour == id).ToList();
+        }
     }
 }

@@ -158,6 +158,8 @@
     <Compile Include="Controllers\DoanKhachController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachController.cs" />
+    <Compile Include="Controllers\NhanVienController.cs" />
+    <Compile Include="Controllers\TinhHinhTourController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -307,6 +309,8 @@
     <Content Include="Views\DoanKhach\Detail.cshtml" />
     <Content Include="Views\Khach\Index.cshtml" />
     <Content Include="Views\ChiphiTour\Index.cshtml" />
+    <Content Include="Views\NhanVien\Index.cshtml" />
+    <Content Include="Views\TinhHinhTour\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

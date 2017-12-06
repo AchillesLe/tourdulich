@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChitietBIZ.cs" />
+    <Compile Include="ThongKeDiTourBIZ.cs" />
     <Compile Include="cttqBIZ.cs" />
     <Compile Include="DiaDiemBIZ.cs" />
     <Compile Include="DoanBIZ.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="LoaiTourBIZ.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThongKeDoanhThuBIZ.cs" />
+    <Compile Include="ThongKeTinhHinhTourBIZ.cs" />
     <Compile Include="TinhThanhBIZ.cs" />
     <Compile Include="TourBIZ.cs" />
   </ItemGroup>
