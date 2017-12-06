@@ -24,7 +24,7 @@ namespace BIZ
 
         public bool update(tour entity)
         {
-            if(validate(entity))
+            if (validate(entity))
                 return tour.Attach(entity);
             return false;
         }
@@ -89,6 +89,15 @@ namespace BIZ
             if (validatedictionary.Count() <= 0)
                 return true;
             return false;
+        }
+        public Dictionary<int, string> Select()
+        {
+            Dictionary<int, string> select = tour.GetQuery().Select(c => new { c.id, c.tentour }).ToDictionary(x => x.id, x => x.tentour);
+            return select;
+        }
+        public tour findEntry(int id)
+        {
+            return tour.Find(x => x.id == id).FirstOrDefault();
         }
 
 

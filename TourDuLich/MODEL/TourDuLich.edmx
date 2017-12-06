@@ -1017,7 +1017,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="tourdulichEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="chiphibuaans" EntityType="Self.chiphibuaan" />
           <EntitySet Name="ctthamquans" EntityType="Self.ctthamquan" />
           <EntitySet Name="diadiems" EntityType="Self.diadiem" />
@@ -1127,7 +1127,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="tourdulichModelStoreContainer" CdmEntityContainer="tourdulichEntities">
+        <EntityContainerMapping StorageEntityContainer="tourdulichModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="chiphibuaans">
             <EntityTypeMapping TypeName="tourdulichModel.chiphibuaan">
               <MappingFragment StoreEntitySet="chiphibuaan">
