@@ -62,3 +62,6 @@ C:\Users\hp\Source\Repos\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLi
 C:\Users\hp\Source\Repos\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.KhachSanVaDiaDiem_Form.resources
 C:\Users\hp\Source\Repos\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.SuaGia_Form.resources
 C:\Users\hp\Source\Repos\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.ThongKeTour_Form.resources
+E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\tourdulich\TourDuLich\TourDuLich_WIN\bin\Debug\TourDuLich_WIN.exe.config
+E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.exe
+E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.pdb
