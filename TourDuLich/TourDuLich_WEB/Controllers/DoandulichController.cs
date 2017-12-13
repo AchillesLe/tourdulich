@@ -13,6 +13,7 @@ namespace TourDuLich_WEB.Controllers
     {
         DoandulichBIZ doanbiz = new DoandulichBIZ();
         DoanKhachSanBIZ doanksbiz = new DoanKhachSanBIZ();
+        DoanKhachBIZ doankhach = new DoanKhachBIZ();
         DoanphuongtienBIZ doanptbiz = new DoanphuongtienBIZ();
         DoanBuaAnBIZ doanbabiz = new DoanBuaAnBIZ();
         DoanchiphikhacBIZ doanchiphikhacbiz = new DoanchiphikhacBIZ();
@@ -30,36 +31,37 @@ namespace TourDuLich_WEB.Controllers
         [HttpPost]
         public ActionResult CreateDoandulich(FormCollection formdoandulich)
         {
+            string thongbao = string.Empty;
 
             if (Request.Form["update"] != null)
             {
                 int idtour = int.Parse(formdoandulich["tour"]);
                 if (formdoandulich["name"] == "")
                 {
-                    Session["thongbao"] = " Bạn chưa nhập tên đoàn !";
+                    thongbao = " Bạn chưa nhập tên đoàn !";
                     goto back;
                 }
                 string name = (formdoandulich["name"]).ToString();
                 if (formdoandulich["start_at"] == "")
                 {
-                    Session["loi"] = " Bạn chưa chọn ngày khởi hành !";
+                    thongbao = " Bạn chưa chọn ngày khởi hành !";
                     goto back;
                 }
                 DateTime ngaykhoihanh = DateTime.Parse(formdoandulich["start_at"]);
                 if (formdoandulich["finish_at"] == "")
                 {
-                    Session["loi"] = " Bạn chưa chọn ngày kết thúc !";
+                    thongbao = " Bạn chưa chọn ngày kết thúc !";
                     goto back;
                 }
                 DateTime ngayketthuc = DateTime.Parse(formdoandulich["finish_at"]);
                 if (ngaykhoihanh > ngayketthuc)
                 {
-                    Session["loi"] = " Ngày kết thúc phải lới hơn ngày bắt đầu !";
+                    thongbao = " Ngày kết thúc phải lớn hơn ngày bắt đầu !";
                     goto back;
                 }
                 if (formdoandulich["money"] == "")
                 {
-                    Session["loi"] = " Bạn chưa nhập số tiền vé !";
+                    thongbao = " Bạn chưa nhập số tiền vé !";
                     goto back;
                 }
                 double tienve = double.Parse(formdoandulich["money"]);
@@ -70,11 +72,11 @@ namespace TourDuLich_WEB.Controllers
                     
                     if(doanbiz.Addnew(idtour,name,ngaykhoihanh, ngayketthuc,tienve))
                     {
-                        Session["thongbao"] = "Thêm thành công ! ";
+                        thongbao = " Thêm thành công ! ";
                     }
                     else
                     {
-                        Session["thongbao"] = "Thêm thất bại vui lòng kiểm tra lại ! ";
+                        thongbao = "Thêm thất bại vui lòng kiểm tra lại ! ";
                     }
                     
                     goto back;
@@ -84,17 +86,18 @@ namespace TourDuLich_WEB.Controllers
                     int id = int.Parse(formdoandulich["id"]);
                     if (doanbiz.UpdateBasic(id,idtour, name, ngaykhoihanh, ngayketthuc, tienve))
                     {
-                        Session["thongbao"] = "Cập nhật thành công ! ";
+                        thongbao = "Cập nhật thành công ! ";
                     }
                     else
                     {
-                        Session["thongbao"] = "Cập nhật thất bại vui lòng kiểm tra lại ! ";
+                        thongbao = "Cập nhật thất bại vui lòng kiểm tra lại ! ";
                     }
                     goto back;
                 }
                 
             }
             back:
+            Session["thongbao"] = thongbao;
             return RedirectToAction("index");
         }
         public ActionResult ChitietDoandulich(int? id)
@@ -207,271 +210,300 @@ namespace TourDuLich_WEB.Controllers
             List<doanbuaan> doanba = (List<doanbuaan>)Session["doanbuaan"];
             List<doanphikhac> doanchiphikhac = (List<doanphikhac>)Session["doanchiphikhac"];
             List<doannhanvien> doannv = (List<doannhanvien>)Session["doannhanvien"];
-            //------------------------------------------------------------------------------------
-            if (Request.Form["luukhachsan"] != null)
+            string loi = string.Empty;
+            if(doandulich != null)
             {
-                Session["flagkhachsan"] = true;
-                int idkhachsantemp = int.Parse(formupdatedoan["khachsan"]);
-                double sotien;
-                DateTime ngaykhachsantemp;
-                if (idkhachsantemp == -1)
+                //------------------------------------------------------------------------------------
+                if (Request.Form["luukhachsan"] != null)
                 {
-                    Session["loi"] = "Bạn chưa chọn khách sạn !";
-                    goto Back;
-                }
-                if (formupdatedoan["khachsanmoney"] == "")
-                {
-                    Session["loi"] = "Bạn chưa nhập số tiền ở khách sạn !";
-                    goto Back;
-                }
-                if (formupdatedoan["datearrive"] == "")
-                {
-                    Session["loi"] = "Bạn chưa chọn ngày !";
-                    goto Back;
-                }
-                sotien = double.Parse(formupdatedoan["khachsanmoney"]);
-                if (doanks.Where(c => c.idkhachsan == idkhachsantemp).FirstOrDefault() != null)
-                {
-                    Session["loi"] = "Khách sạn này đã có sẵn!";
-                    goto Back;
-                }
-                ngaykhachsantemp = DateTime.Parse(formupdatedoan["datearrive"]);
-                doankhachsan doankstemp = new doankhachsan();
-                doankstemp.idkhachsan = idkhachsantemp;
-                doankstemp.iddoan = doandulich.id;
-                doankstemp.sotien = sotien;
-                doankstemp.ngayden = ngaykhachsantemp;
-                doankstemp.khachsan = (new KhachsanBIZ()).find(idkhachsantemp);
-                doanks.Add(doankstemp);
-                Session["doankhachsan"] = doanks;
-                goto Back;
-            }
-            if (Request.Form["luuphuongtien"] != null)
-            {
-                Session["flagphuongtien"] = true;
-                int idphuongtientemp = int.Parse(formupdatedoan["phuongtien"]);
-                if (idphuongtientemp == -1)
-                {
-                    Session["loi"] = "Bạn chưa chọn  phương tiện!";
-                    goto Back;
-                }
-                if (formupdatedoan["phuongtienmoney"] == "")
-                {
-                    Session["loi"] = "Bạn chưa nhập số tiền cho phương tiện !";
-                    goto Back;
-                }
-                double sotien = double.Parse(formupdatedoan["phuongtienmoney"]);
-                if (formupdatedoan["dateusedayuse"] == "")
-                {
-                    Session["loi"] = "Bạn chưa chọn ngày !";
-                    goto Back;
-                }
-                DateTime ngayphuongtientemp = DateTime.Parse(formupdatedoan["dateusedayuse"]);
-                if (doanpt.Where(c => c.idphuongtien == idphuongtientemp && c.ngay == ngayphuongtientemp).FirstOrDefault() != null)
-                {
-                    Session["loi"] = "Phương tiện và giờ này đã có sẵn!";
-                    goto Back;
-                }
-                doanphuongtien doanpttemp = new doanphuongtien();
-                doanpttemp.iddoan = doandulich.id;
-                doanpttemp.ngay = ngayphuongtientemp;
-                doanpttemp.sotien = sotien;
-                doanpttemp.idphuongtien = idphuongtientemp;
-                doanpttemp.phuongtien = (new PhuongtienBIZ()).find(idphuongtientemp);
-                doanpt.Add(doanpttemp);
-                Session["doanphuongtien"] = doanpt;
-                goto Back;
-            }
-            if (Request.Form["luubuaan"] != null)
-            {
-                Session["flagbuaan"] = true;
-                int idbuaantemp = int.Parse(formupdatedoan["buaan"]);  
-                if (idbuaantemp == -1)
-                {
-                    Session["loi"] = "Bạn chưa chọn bữa ăn!";
-                    goto Back;
-                }
-                if (formupdatedoan["bamoney"] == "")
-                {
-                    Session["loi"] = "Bạn chưa nhập số tiền cho bữa ăn!";
-                    goto Back;
-                }
-                double sotien = double.Parse(formupdatedoan["bamoney"]);
-                if (formupdatedoan["ngayeat"] == "")
-                {
-                    Session["loi"] = "Bạn chưa chọn ngày ăn!";
-                    goto Back;
-                }
-                DateTime ngayantemp = DateTime.Parse(formupdatedoan["ngayeat"]);
-                if (doanpt.Where(c => c.idphuongtien == idbuaantemp && c.ngay == ngayantemp).FirstOrDefault() != null)
-                {
-                    Session["loi"] = "Bữa ăn và ngày ăn này đã có sẵn!";
-                    goto Back;
-                }
-                doanbuaan doanbantemp = new doanbuaan();
-                doanbantemp.iddoan = doandulich.id;
-                doanbantemp.idbuaan = idbuaantemp;
-                doanbantemp.ngay = ngayantemp;
-                doanbantemp.sotien = sotien;
-                doanbantemp.chiphibuaan = (new BuaAnBIZ()).find(idbuaantemp);
-                doanba.Add(doanbantemp);
-                Session["doanbuaan"] = doanba;
-                goto Back;
-            }
-            if (Request.Form["luuchiphikhac"] != null)
-            {
-                Session["flagphikhac"] = true;
-                if (formupdatedoan["phikhac"] == "")
-                {
-                    Session["loi"] = "Bạn chưa nhập phí khác!";
-                    goto Back;
-                }
-                string namechiphi = formupdatedoan["phikhac"];
-                if (formupdatedoan["phikhacmoney"] == "")
-                {
-                    Session["loi"] = "Bạn chưa nhập số tiền cho phí khác!";
-                    goto Back;
-                }
-                double sotien = double.Parse(formupdatedoan["phikhacmoney"]);
-                if (formupdatedoan["datephikhac"] == "")
-                {
-                    Session["loi"] = "Bạn chưa chọn ngày sử dụng phí khác!";
-                    goto Back;
-                }
-                DateTime ngayphikhac = DateTime.Parse(formupdatedoan["datephikhac"]);
-                if (doanchiphikhac.Where(c => c.name == namechiphi && c.ngay == ngayphikhac).FirstOrDefault() != null)
-                {
-                    Session["loi"] = "Phí  này và ngày đã có sẵn!";
-                    goto Back;
-                }
-                doanphikhac doanphikhac = new doanphikhac();
-                doanphikhac.iddoan = doandulich.id;
-                doanphikhac.name = namechiphi;
-                doanphikhac.ngay = ngayphikhac;
-                doanphikhac.sotien = sotien;
-                doanphikhac.note = formupdatedoan["note"];
-                doanchiphikhac.Add(doanphikhac);
-                Session["doanchiphikhac"] = doanchiphikhac;
-                goto Back;
+                    Session["flagkhachsan"] = true;
+                    int idkhachsantemp = int.Parse(formupdatedoan["khachsan"]);
+                    double sotien;
+                    DateTime ngaykhachsantemp;
+                    if (idkhachsantemp == -1)
+                    {
+                        loi = "Bạn chưa chọn khách sạn !";
+                        goto Back;
+                    }
+                    if (formupdatedoan["khachsanmoney"] == "")
+                    {
+                        loi = "Bạn chưa nhập số tiền ở khách sạn !";
+                        goto Back;
+                    }
+                    sotien = double.Parse(formupdatedoan["khachsanmoney"]);
+                    if (formupdatedoan["datearrive"] == "")
+                    {
+                        loi = "Bạn chưa chọn ngày !";
+                        goto Back;
+                    }
+                    ngaykhachsantemp = DateTime.Parse(formupdatedoan["datearrive"]);
+                    if (ngaykhachsantemp < doandulich.ngaykhoihanh || ngaykhachsantemp > doandulich.ngayketthuc)
+                    {
+                        loi = "Ngày tới khách sạn phải từ " + doandulich.ngaykhoihanh + " -> " + doandulich.ngayketthuc;
+                        goto Back;
+                    }
+                    if (doanks.Where(c => c.idkhachsan == idkhachsantemp).FirstOrDefault() != null)
+                    {
+                        loi = "Khách sạn này đã có sẵn!";
+                        goto Back;
+                    }
 
-            }
-            if (Request.Form["luunhanvien"] != null)
-            {
-                Session["flagnhanvien"] = true;
-                if (int.Parse(formupdatedoan["nhanvien"]) == -1)
-                {
-                    Session["loi"] = "Bạn chưa chọn nhân viên!";
+                    doankhachsan doankstemp = new doankhachsan();
+                    doankstemp.idkhachsan = idkhachsantemp;
+                    doankstemp.iddoan = doandulich.id;
+                    doankstemp.sotien = sotien;
+                    doankstemp.ngayden = ngaykhachsantemp;
+                    doankstemp.khachsan = (new KhachsanBIZ()).find(idkhachsantemp);
+                    doanks.Add(doankstemp);
+                    Session["doankhachsan"] = doanks;
                     goto Back;
                 }
-                int idnhanvientemp = int.Parse(formupdatedoan["nhanvien"]);
-                if (int.Parse(formupdatedoan["nhiemvu"]) == -1)
+                if (Request.Form["luuphuongtien"] != null)
                 {
-                    Session["loi"] = "Bạn chưa chọn nhiệm vụ cho nhân viên!";
-                    goto Back;
-                }
-                int idnhiemvutemp = int.Parse(formupdatedoan["nhiemvu"]);
-                if (doannv.Where(c => c.idnhanvien == idnhanvientemp && c.idnhiemvu == idnhiemvutemp).FirstOrDefault() != null)
-                {
-                    Session["loi"] = "Nhân viên với nhiệm vụ này đã có trong dự định!";
-                    goto Back;
-                }
-                doannhanvien doannvtemp = new doannhanvien();
-                doannvtemp.iddoan = doandulich.id;
-                doannvtemp.idnhanvien = idnhanvientemp;
-                doannvtemp.idnhiemvu = idnhiemvutemp;
-                doannvtemp.nhanvien = (new NhanVienBIZ()).find(idnhanvientemp);
-                doannvtemp.nhiemvu = (new NhiemVuBIZ()).find(idnhiemvutemp);
-                doannv.Add(doannvtemp);
-                Session["doannhanvien"] = doannv;
-                goto Back;
-            }
-            if (Request.Form["luu"] != null)
-            {
-                double tongtienkhachsan = 0, tongtienan = 0, tongtienphuongtien = 0, tongtienchiphikhac = 0;
-                doandulich doantemp = doanbiz.find(doandulich.id);
-                if ((bool)Session["flagkhachsan"] == true)
-                {
-                   doanksbiz.deleteByDoan(doandulich.id);
-                    foreach (var item in doanks)
+                    Session["flagphuongtien"] = true;
+                    int idphuongtientemp = int.Parse(formupdatedoan["phuongtien"]);
+                    if (idphuongtientemp == -1)
                     {
-                        doankhachsan ks = new doankhachsan();
-                        ks.iddoan = item.iddoan;
-                        ks.ngayden = item.ngayden;
-                        ks.sotien = item.sotien;
-                        ks.idkhachsan = item.idkhachsan;
-                        doanksbiz.Add(ks);
-                        tongtienkhachsan += item.sotien;
+                        loi = "Bạn chưa chọn  phương tiện!";
+                        goto Back;
                     }
-                    doantemp.tongtienkhachsan = tongtienkhachsan;       
-                }
-                if ((bool)Session["flagphuongtien"] == true)
-                {
-                    doanptbiz.deleteByDoan(doandulich.id);
-                    foreach (var item in doanpt)
+                    if (formupdatedoan["phuongtienmoney"] == "")
                     {
-                        doanphuongtien pt = new doanphuongtien();
-                        pt.idphuongtien = item.idphuongtien;
-                        pt.iddoan = item.iddoan;
-                        pt.sotien = item.sotien;
-                        pt.ngay = item.ngay;
-                        doanptbiz.Add(pt);
-                        tongtienphuongtien += item.sotien;
+                        loi = "Bạn chưa nhập số tiền cho phương tiện !";
+                        goto Back;
                     }
-                    doantemp.tongtienphuongtien = tongtienphuongtien;
-                    
-                }
-                if ((bool)Session["flagbuaan"] == true)
-                {
-                    doanbabiz.deleteByDoan(doandulich.id);
-                    foreach (var item in doanba)
+                    double sotien = double.Parse(formupdatedoan["phuongtienmoney"]);
+                    if (formupdatedoan["dateusedayuse"] == "")
                     {
-                        doanbuaan ba = new doanbuaan();
-                        ba.idbuaan = item.idbuaan;
-                        ba.iddoan = item.iddoan;
-                        ba.sotien = item.sotien;
-                        ba.ngay = item.ngay;
-                        doanbabiz.Add(ba);
-                        tongtienan += item.sotien;
+                        loi = "Bạn chưa chọn ngày sử dụng phương tiện !";
+                        goto Back;
                     }
-                    doantemp.tongtienan = tongtienan;
-                }
-                if ((bool)Session["flagphikhac"] == true)
-                {
-                    doanchiphikhacbiz.deleteByDoan(doandulich.id);
-                    foreach (var item in doanchiphikhac)
+                    DateTime ngayphuongtientemp = DateTime.Parse(formupdatedoan["dateusedayuse"]);
+                    if (ngayphuongtientemp < doandulich.ngaykhoihanh || ngayphuongtientemp > doandulich.ngayketthuc)
                     {
-                        doanphikhac phikhac = new doanphikhac();
-                        phikhac.iddoan = item.iddoan;
-                        phikhac.name = item.name;
-                        phikhac.ngay = item.ngay;
-                        phikhac.note = item.note;
-                        phikhac.sotien = item.sotien;
-                        doanchiphikhacbiz.Add(phikhac);
-                        tongtienchiphikhac += item.sotien;
+                        loi = "Ngày sử dụng phương tiện phải từ " + doandulich.ngaykhoihanh + " -> " + doandulich.ngayketthuc;
+                        goto Back;
                     }
-                    doantemp.tongtienchiphikhac = tongtienchiphikhac;
-                }
-                if ((bool)Session["flagnhanvien"] == true)
-                {
-                    doannvbiz.deleteByDoan(doandulich.id);
-                    foreach (var item in doannv)
+                    if (doanpt.Where(c => c.idphuongtien == idphuongtientemp && c.ngay == ngayphuongtientemp).FirstOrDefault() != null)
                     {
-                        doannhanvien nv = new doannhanvien();
-                        nv.iddoan = item.iddoan;
-                        nv.idnhanvien = item.idnhanvien;
-                        nv.idnhiemvu = item.idnhiemvu;
-                        doannvbiz.Add(nv);
+                        loi = "Phương tiện và giờ này đã có sẵn!";
+                        goto Back;
                     }
-                }
-                if(doanbiz.Update(doantemp))
-                    Session["thongbao"] = "Cập nhật thành công !";
-                else Session["thongbao"] = "Cập nhật thất bại !";
 
-            }
-            return RedirectToAction("index");
+                    doanphuongtien doanpttemp = new doanphuongtien();
+                    doanpttemp.iddoan = doandulich.id;
+                    doanpttemp.ngay = ngayphuongtientemp;
+                    doanpttemp.sotien = sotien;
+                    doanpttemp.idphuongtien = idphuongtientemp;
+                    doanpttemp.phuongtien = (new PhuongtienBIZ()).find(idphuongtientemp);
+                    doanpt.Add(doanpttemp);
+                    Session["doanphuongtien"] = doanpt;
+                    goto Back;
+                }
+                if (Request.Form["luubuaan"] != null)
+                {
+                    Session["flagbuaan"] = true;
+                    int idbuaantemp = int.Parse(formupdatedoan["buaan"]);
+                    if (idbuaantemp == -1)
+                    {
+                        loi = "Bạn chưa chọn bữa ăn!";
+                        goto Back;
+                    }
+                    if (formupdatedoan["bamoney"] == "")
+                    {
+                        loi = "Bạn chưa nhập số tiền cho bữa ăn!";
+                        goto Back;
+                    }
+                    double sotien = double.Parse(formupdatedoan["bamoney"]);
+                    if (formupdatedoan["ngayeat"] == "")
+                    {
+                        loi = "Bạn chưa chọn ngày ăn!";
+                        goto Back;
+                    }
+                    DateTime ngayantemp = DateTime.Parse(formupdatedoan["ngayeat"]);
+                    if (ngayantemp < doandulich.ngaykhoihanh || ngayantemp > doandulich.ngayketthuc)
+                    {
+                        loi = "Ngày ăn phải từ " + doandulich.ngaykhoihanh + " -> " + doandulich.ngayketthuc;
+                        goto Back;
+                    }
+                    if (doanpt.Where(c => c.idphuongtien == idbuaantemp && c.ngay == ngayantemp).FirstOrDefault() != null)
+                    {
+                        loi = "Bữa ăn và ngày ăn này đã có sẵn!";
+                        goto Back;
+                    }
+                    doanbuaan doanbantemp = new doanbuaan();
+                    doanbantemp.iddoan = doandulich.id;
+                    doanbantemp.idbuaan = idbuaantemp;
+                    doanbantemp.ngay = ngayantemp;
+                    doanbantemp.sotien = sotien;
+                    doanbantemp.chiphibuaan = (new BuaAnBIZ()).find(idbuaantemp);
+                    doanba.Add(doanbantemp);
+                    Session["doanbuaan"] = doanba;
+                    goto Back;
+                }
+                if (Request.Form["luuchiphikhac"] != null)
+                {
+                    Session["flagphikhac"] = true;
+                    if (formupdatedoan["phikhac"] == "")
+                    {
+                        loi = "Bạn chưa nhập phí khác!";
+                        goto Back;
+                    }
+                    string namechiphi = formupdatedoan["phikhac"];
+                    if (formupdatedoan["phikhacmoney"] == "")
+                    {
+                        loi = "Bạn chưa nhập số tiền cho phí khác!";
+                        goto Back;
+                    }
+                    double sotien = double.Parse(formupdatedoan["phikhacmoney"]);
+                    if (formupdatedoan["datephikhac"] == "")
+                    {
+                        loi = "Bạn chưa chọn ngày sử dụng phí khác!";
+                        goto Back;
+                    }
+                    DateTime ngayphikhac = DateTime.Parse(formupdatedoan["datephikhac"]);
+                    if (ngayphikhac < doandulich.ngaykhoihanh || ngayphikhac > doandulich.ngayketthuc)
+                    {
+                        loi = "Ngày sử dụng phí khác phải từ " + doandulich.ngaykhoihanh + " -> " + doandulich.ngayketthuc;
+                        goto Back;
+                    }
+                    if (doanchiphikhac.Where(c => c.name == namechiphi && c.ngay == ngayphikhac).FirstOrDefault() != null)
+                    {
+                        loi = "Phí  này và ngày đã có sẵn!";
+                        goto Back;
+                    }
+                    doanphikhac doanphikhac = new doanphikhac();
+                    doanphikhac.iddoan = doandulich.id;
+                    doanphikhac.name = namechiphi;
+                    doanphikhac.ngay = ngayphikhac;
+                    doanphikhac.sotien = sotien;
+                    doanphikhac.note = formupdatedoan["note"];
+                    doanchiphikhac.Add(doanphikhac);
+                    Session["doanchiphikhac"] = doanchiphikhac;
+                    goto Back;
 
-            Back:
-            return RedirectToAction("ChitietDoandulich", "Doandulich", new { @id = doandulich.id });
+                }
+                if (Request.Form["luunhanvien"] != null)
+                {
+                    Session["flagnhanvien"] = true;
+                    if (int.Parse(formupdatedoan["nhanvien"]) == -1)
+                    {
+                        loi = "Bạn chưa chọn nhân viên!";
+                        goto Back;
+                    }
+                    int idnhanvientemp = int.Parse(formupdatedoan["nhanvien"]);
+                    if (int.Parse(formupdatedoan["nhiemvu"]) == -1)
+                    {
+                        loi = "Bạn chưa chọn nhiệm vụ cho nhân viên!";
+                        goto Back;
+                    }
+                    int idnhiemvutemp = int.Parse(formupdatedoan["nhiemvu"]);
+                    if (doannv.Where(c => c.idnhanvien == idnhanvientemp && c.idnhiemvu == idnhiemvutemp).FirstOrDefault() != null)
+                    {
+                        loi = " Nhân viên với nhiệm vụ này đã có tồn tại!";
+                        goto Back;
+                    }
+                    doannhanvien doannvtemp = new doannhanvien();
+                    doannvtemp.iddoan = doandulich.id;
+                    doannvtemp.idnhanvien = idnhanvientemp;
+                    doannvtemp.idnhiemvu = idnhiemvutemp;
+                    doannvtemp.nhanvien = (new NhanVienBIZ()).find(idnhanvientemp);
+                    doannvtemp.nhiemvu = (new NhiemVuBIZ()).find(idnhiemvutemp);
+                    doannv.Add(doannvtemp);
+                    Session["doannhanvien"] = doannv;
+                    goto Back;
+                }
+                if (Request.Form["luu"] != null)
+                {
+                    double tongtienkhachsan = 0, tongtienan = 0, tongtienphuongtien = 0, tongtienchiphikhac = 0;
+                    doandulich doantemp = doanbiz.find(doandulich.id);
+                    if ((bool)Session["flagkhachsan"] == true)
+                    {
+                        doanksbiz.deleteByDoan(doandulich.id);
+                        foreach (var item in doanks)
+                        {
+                            doankhachsan ks = new doankhachsan();
+                            ks.iddoan = item.iddoan;
+                            ks.ngayden = item.ngayden;
+                            ks.sotien = item.sotien;
+                            ks.idkhachsan = item.idkhachsan;
+                            doanksbiz.Add(ks);
+                            tongtienkhachsan += item.sotien;
+                        }
+                        doantemp.tongtienkhachsan = tongtienkhachsan;
+                    }
+                    if ((bool)Session["flagphuongtien"] == true)
+                    {
+                        doanptbiz.deleteByDoan(doandulich.id);
+                        foreach (var item in doanpt)
+                        {
+                            doanphuongtien pt = new doanphuongtien();
+                            pt.idphuongtien = item.idphuongtien;
+                            pt.iddoan = item.iddoan;
+                            pt.sotien = item.sotien;
+                            pt.ngay = item.ngay;
+                            doanptbiz.Add(pt);
+                            tongtienphuongtien += item.sotien;
+                        }
+                        doantemp.tongtienphuongtien = tongtienphuongtien;
+
+                    }
+                    if ((bool)Session["flagbuaan"] == true)
+                    {
+                        doanbabiz.deleteByDoan(doandulich.id);
+                        foreach (var item in doanba)
+                        {
+                            doanbuaan ba = new doanbuaan();
+                            ba.idbuaan = item.idbuaan;
+                            ba.iddoan = item.iddoan;
+                            ba.sotien = item.sotien;
+                            ba.ngay = item.ngay;
+                            doanbabiz.Add(ba);
+                            tongtienan += item.sotien;
+                        }
+                        doantemp.tongtienan = tongtienan;
+                    }
+                    if ((bool)Session["flagphikhac"] == true)
+                    {
+                        doanchiphikhacbiz.deleteByDoan(doandulich.id);
+                        foreach (var item in doanchiphikhac)
+                        {
+                            doanphikhac phikhac = new doanphikhac();
+                            phikhac.iddoan = item.iddoan;
+                            phikhac.name = item.name;
+                            phikhac.ngay = item.ngay;
+                            phikhac.note = item.note;
+                            phikhac.sotien = item.sotien;
+                            doanchiphikhacbiz.Add(phikhac);
+                            tongtienchiphikhac += item.sotien;
+                        }
+                        doantemp.tongtienchiphikhac = tongtienchiphikhac;
+                    }
+                    if ((bool)Session["flagnhanvien"] == true)
+                    {
+                        doannvbiz.deleteByDoan(doandulich.id);
+                        foreach (var item in doannv)
+                        {
+                            doannhanvien nv = new doannhanvien();
+                            nv.iddoan = item.iddoan;
+                            nv.idnhanvien = item.idnhanvien;
+                            nv.idnhiemvu = item.idnhiemvu;
+                            doannvbiz.Add(nv);
+                        }
+                    }
+                    if (doanbiz.Update(doantemp))
+                        Session["thongbao"] = " Cập nhật thành công !";
+                    else Session["thongbao"] = " Cập nhật thất bại !";
+
+                }
+                return RedirectToAction("index");
+
+                Back:
+                Session["loi"] = loi;
+                return RedirectToAction("ChitietDoandulich", "Doandulich", new { @id = doandulich.id });
+            }
+            return Redirect(Request.UrlReferrer.ToString());
+
 
         }
         public ActionResult infordoandulich(int id)
@@ -548,14 +580,16 @@ namespace TourDuLich_WEB.Controllers
         public ActionResult delete(int id)
         {
             Session["thongbao"] = "";
-            if ( doanksbiz.findByDoan(id).Count() > 0 || doanptbiz.findByDoan(id).Count() > 0 || doanbabiz.findByDoan(id).Count() > 0)
+            if ( doanksbiz.findByDoan(id).Count() > 0 || doanptbiz.findByDoan(id).Count() > 0 || doanbabiz.findByDoan(id).Count() > 0 || doankhach.findByDoan(id).Count() > 0 || doannvbiz.findByDoan(id).Count() >0)
             {
-                Session["thongbaoxoa"] = "Đã có dữ liệu liên quan về (Hành khách , khách sạn ,phương tiện ....) , không thể xoá !";
+                Session["thongbao"] = "Đã có dữ liệu liên quan về (Hành khách , khách sạn ,phương tiện ,nhân viên ....) , không thể xoá . Vui lòng kiểm tra lại !";
             }
             else
             {
-                doanbiz.delete(id);
-                Session["thongbao"] = "Xoá thành công ! ";
+                if(doanbiz.delete(id))
+                    Session["thongbao"] = "Xoá thành công ! ";
+                else
+                    Session["thongbao"] = "Xoá thất bại . Vui lòng kiểm tra lại ! ";
             }
             return RedirectToAction("index");
         }
