@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     int number = 0;
     string loi = (string)Session["loi"];
+    bool flatkh = (bool)Session["flagkh"];
     MODEL.doandulich doandulich = (MODEL.doandulich)Session["doan"];
     List<MODEL.khachhang> listkhachhang = (List<MODEL.khachhang>)Session["listkhachhang"];
     List<MODEL.doankhachhang> listdoankhach = (List<MODEL.doankhachhang>)Session["doankh"];
@@ -24,7 +25,7 @@
             <div class="card-block card-khachsan">
                 <h4 style="margin-left:10px">Danh sách khách hàng có sẵn</h4>
                 <hr />
-                <table class="table table-bordered khvaible" id="dataTable" cellspacing="0">
+                <table class="table table-bordered khvaible" id="dataTable"  cellspacing="0">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -149,8 +150,8 @@
                 </table>*@
 
                 <hr />
-                <h4 style="margin-left:10px;">Danh sách khách hàng của đoàn @doandulich.tendoan</h4>
-                <table class="table table-bordered">
+                <center> <h4 style="margin-left:10px;">Danh sách khách hàng của đoàn -- @doandulich.tendoan --</h4><br /><h5>Từ ngày @doandulich.ngaykhoihanh -> @doandulich.ngayketthuc  </h5></center>
+                <table class="table table-bordered" >
                     <thead>
                         <tr>
                             <th>#</th>
@@ -180,12 +181,37 @@
                 </table>
             </div>
             <div class="row">
-                <div class="col-md-3"><input type="submit" class="form-control btn btn-info" name="luulist" value="lưu danh sách" style="margin:30px;" /></div><div class="col-md-3" style="margin:30px;"><input name="cancel" type="submit" class="form-control btn btn-danger" value="Huỷ"></div>
-            </div>
+               
+                    @if (flatkh != true)
+                    {
+                        <div class="col-md-3">
+                            <input type="submit" class="form-control btn btn-info" name="luulist" value="lưu danh sách" style="margin:30px;" disabled />
+                        </div>
+                        <div class="col-md-3" style="margin:30px;">
+                            <input name="cancel" type="submit" class="form-control btn btn-danger" value="Huỷ" disabled>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-3">
+                            <input type="submit" class="form-control btn btn-info" name="luulist" value="lưu danh sách" style="margin:30px;" />
+                        </div>
+                        <div class="col-md-3" style="margin:30px;">
+                            <input name="cancel" type="submit" class="form-control btn btn-danger" value="Huỷ">
+                        </div>
+                    }
+           </div>
         </div>
         </div>
 </form>
-
+<script>
+    $(document).ready(function () {
+        $('.khvaible').dataTable({
+                                    "aLengthMenu": [[5, 10, 25,50,75, -1], [5,10,25, 50, 75, "All"]],
+            "iDisplayLength": 5
+        });
+    });
+</script>
 
 
 

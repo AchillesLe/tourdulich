@@ -105,6 +105,10 @@ namespace TourDuLich_WEB.Controllers
                 goto Back;
 
             }
+            if (Request.Form["cancel"] != null)
+            {
+                    return RedirectToAction("index");
+            }
             Back:
             return RedirectToAction("Detail","DoanKhach",new { id= doandulich.id });
         }

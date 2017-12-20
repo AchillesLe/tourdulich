@@ -5,6 +5,11 @@
     var doandulich = (MODEL.doandulich)Session["doandulich"];
     string loi = (string)Session["loi"];
     Session.Remove("loi");
+    bool flagkhachsan = (bool)Session["flagkhachsan"];
+    bool flagbuaan = (bool)Session["flagbuaan"];
+    bool flagphuongtien = (bool)Session["flagphuongtien"];
+    bool flagnhanvien = (bool)Session["flagnhanvien"];
+    bool flagphikhac = (bool)Session["flagphikhac"];
     int number = 0;
 }
 @if (loi != "" && loi!=null)
@@ -15,7 +20,7 @@
 }
     
 <form action="/Doandulich/Update" method="POST" accept-charset="utf-8" name="formupdatedoan">
-    <center><h3>Chi phí của đoàn - @doandulich.tendoan -</h3><br /><h5>Từ ngày @doandulich.ngaykhoihanh -> @doandulich.ngayketthuc  </h5></center>
+    <center><h3>Chi phí của đoàn -- @doandulich.tendoan --</h3><br /><h5>Từ ngày @doandulich.ngaykhoihanh -> @doandulich.ngayketthuc  </h5></center>
     @Html.AntiForgeryToken()
     @*khách sạn*@
     <div class="card mb-3">
@@ -340,7 +345,7 @@
                                                 <td>@number</td>
                                                 <td>@nv.nhanvien.tennhanvien</td>
                                                 <td>@nv.nhiemvu.tennhiemvu</td>
-                                                <td><a class="btn btn-link" href=@Url.Action("deletechitiet","nhanvien",new { id=doandulich.id, detail = "khachsan",idct = number})>Xoá</a></td>
+                                                <td><a class="btn btn-link" href=@Url.Action("deletechitiet","Doandulich",new { id=doandulich.id, detail = "nhanvien",idct = number})>Xoá</a></td>
                                             </tr>
                                         }
                                         number = 0;
@@ -351,7 +356,26 @@
          </div>
     </div>
     <div class="row">
-        <div class="col-md-4" style="margin:30px;"><input name="luu" type="submit" class="form-control btn btn-info" value="Lưu tất cả" /></div><div class="col-md-4" style="margin:30px;"><input name="cancel" type="submit" class="form-control btn btn-danger" value="Huỷ"></div>
+        @if (!flagkhachsan && !flagbuaan && !flagphuongtien && !flagnhanvien && !flagphikhac)
+        {
+            <div class="col-md-4" style="margin:30px;">
+                <input name="luu" type="submit" class="form-control btn btn-info" value="Lưu tất cả"  disabled/>
+            </div>
+            <div class="col-md-4" style="margin:30px;">
+                <input name="cancel" type="submit" class="form-control btn btn-danger" value="Huỷ" disabled>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-4" style="margin:30px;">
+                <input name="luu" type="submit" class="form-control btn btn-info" value="Lưu tất cả" />
+            </div>
+            <div class="col-md-4" style="margin:30px;">
+                <input name="cancel" type="submit" class="form-control btn btn-danger" value="Huỷ">
+            </div>
+
+        }
+        
     </div>
 </form>
     @*<div class="card mb-3">
