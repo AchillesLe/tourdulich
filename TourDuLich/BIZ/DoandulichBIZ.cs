@@ -65,7 +65,7 @@ namespace BIZ
 
         public IList<doandulich> GetbyTour(int id , DateTime start, DateTime end)
         {
-            return doandulich.GetQuery().Where(x => x.idtour == id).Where(x => x.ngaykhoihanh >= start).Where(x => x.ngayketthuc <= end).ToList();
+            return doandulich.GetQuery().Where(x => x.idtour == id).Where(x => x.ngaykhoihanh >= start).Where(x => x.ngaykhoihanh <= end).ToList();
         }
         //Khang
         public List<doandulich> GetByTourId(int id)
