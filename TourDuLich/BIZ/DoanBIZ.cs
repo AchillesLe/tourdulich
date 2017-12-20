@@ -126,6 +126,10 @@ namespace BIZ
         {
             return doankhachhang.GetQuery().Where(c => c.iddoan == id).ToList();
         }
+        public IList<doankhachhang> findByKhach(int id)
+        {
+            return doankhachhang.GetQuery().Where(c => c.idkhachhang == id).ToList();
+        }
         public IList<doankhachhang> getListbyDoan(int id)
         {
             

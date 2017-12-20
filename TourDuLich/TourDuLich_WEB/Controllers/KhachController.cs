@@ -13,6 +13,7 @@ namespace TourDuLich_WEB.Controllers
     {
         // GET: Khach
         KhachBIZ khachbiz = new KhachBIZ();
+        DoanKhachBIZ doankhach = new DoanKhachBIZ();
         public ActionResult Index()
         {
             ViewBag.khach = khachbiz.Getlist() ;
@@ -80,7 +81,7 @@ namespace TourDuLich_WEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var khach = (new DoanKhachBIZ()).findByDoan((int)id);
+            var khach = doankhach.findByKhach((int)id);
             var kh = khachbiz.find((int)id);
             if (khach.Count() > 0)
             {
