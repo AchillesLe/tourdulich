@@ -8,10 +8,10 @@ namespace MODEL
 {
     public class doanhthutourdto
     {
-        [System.ComponentModel.DisplayName("Mã tour")]
-        public int matour { get; set; }
         [System.ComponentModel.DisplayName("Tên tour")]
         public string tentour { get; set; }
+        [System.ComponentModel.DisplayName("Tên đoàn")]
+        public string tendoan { get; set; }
         [System.ComponentModel.DisplayName("Giá tour")]
         public double giatour { get; set; }
         [System.ComponentModel.DisplayName("Tổng thu")]
@@ -21,10 +21,10 @@ namespace MODEL
 
         public doanhthutourdto(doandulich entity)
         {
-            matour = entity.idtour;
+            tendoan = entity.tendoan;
             tentour = entity.tour.tentour;
-            giatour = entity.tongtientour;
-            tongthu = entity.tienve;
+            giatour = entity.tienve;
+            tongthu = entity.tongtientour;
             ngaytao = entity.ngaytao;
         }
     }
