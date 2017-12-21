@@ -68,7 +68,7 @@ namespace TourDuLich_WIN
             TinhThanhBIZ ttb = new TinhThanhBIZ();
             tinh entity = new tinh();
             entity.id = Int32.Parse(textBox1.Text);
-            entity.tentinh = textBox2.Text.ToUpper();
+            entity.tentinh = textBox2.Text;
             bool check = ttb.add(entity);
             if (check)
             {

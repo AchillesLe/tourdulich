@@ -67,7 +67,7 @@ namespace TourDuLich_WIN
             LoaiTourBIZ ltb = new LoaiTourBIZ();
             loaitour entity = new loaitour();
             entity.id = Int32.Parse(textBox1.Text);
-            entity.tenloaitour = textBox2.Text.ToUpper();
+            entity.tenloaitour = textBox2.Text;
             bool check = ltb.add(entity);
             if (check)
             {
