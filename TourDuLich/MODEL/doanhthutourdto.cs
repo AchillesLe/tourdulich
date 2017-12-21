@@ -21,6 +21,7 @@ namespace MODEL
 
         public doanhthutourdto(doandulich entity)
         {
+            //de commit
             tendoan = entity.tendoan;
             tentour = entity.tour.tentour;
             giatour = entity.tienve;
