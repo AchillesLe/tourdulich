@@ -46,6 +46,10 @@ namespace BIZ
         {
             return doandulich.Update(doan);
         }
+        public bool UpdateTongtienDoan(doandulich doan)
+        {
+            return doandulich.Attach(doan);
+        }
         public bool delete(int id)
         {
             doandulich doan = doandulich.Find(x=>x.id == id).FirstOrDefault();

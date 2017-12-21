@@ -65,6 +65,7 @@ namespace BIZ
             return tour.Find(c => c.tentour == value).FirstOrDefault().id;
         }
 
+
         public bool find(string value)
         {
             var a = tour.Find(c => c.tentour == value).ToList();
@@ -95,11 +96,19 @@ namespace BIZ
             Dictionary<int, string> select = tour.GetQuery().Select(c => new { c.id, c.tentour }).ToDictionary(x => x.id, x => x.tentour);
             return select;
         }
+        public Dictionary<int, string> Selectwithgiave()
+        {
+            Dictionary<int, string> select = tour.GetQuery().Select(c => new { c.id, c.tentour,c.giatour }).ToDictionary(x => x.id, x => x.tentour+" / "+ x.giatour);
+            return select;
+        }
         public tour findEntry(int id)
         {
             return tour.Find(x => x.id == id).FirstOrDefault();
         }
 
-
+        public double TienTour(int id)
+        {
+            return tour.Find(c => c.id == id).FirstOrDefault().giatour;
+        }
     }
 }

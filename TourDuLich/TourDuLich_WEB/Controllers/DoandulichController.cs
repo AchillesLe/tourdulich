@@ -25,7 +25,7 @@ namespace TourDuLich_WEB.Controllers
         {
 
             ViewBag.listdoandulich = doanbiz.Getlist();
-            ViewBag.tour = tourbiz.Select();
+            ViewBag.tour = tourbiz.Selectwithgiave();
             return View();
         }
         [HttpPost]
@@ -35,7 +35,7 @@ namespace TourDuLich_WEB.Controllers
 
             if (Request.Form["update"] != null)
             {
-                int idtour = int.Parse(formdoandulich["tour"]);
+                
                 if (formdoandulich["name"] == "")
                 {
                     thongbao = " Bạn chưa nhập tên đoàn !";
@@ -59,18 +59,18 @@ namespace TourDuLich_WEB.Controllers
                     thongbao = " Ngày kết thúc phải lớn hơn ngày bắt đầu !";
                     goto back;
                 }
-                if (formdoandulich["money"] == "")
-                {
-                    thongbao = " Bạn chưa nhập số tiền vé !";
-                    goto back;
-                }
-                double tienve = double.Parse(formdoandulich["money"]);
-
+                //if (formdoandulich["money"] == "")
+                //{
+                //    thongbao = " Bạn chưa nhập số tiền vé !";
+                //    goto back;
+                //}
+                //double tienve = double.Parse(formdoandulich["money"]);
+                
                 if (formdoandulich["id"]=="")
                 {
-                    
-                    
-                    if(doanbiz.Addnew(idtour,name,ngaykhoihanh, ngayketthuc,tienve))
+                    int idtour = int.Parse(formdoandulich["tour"]);
+                    double tienve = tourbiz.TienTour(idtour);
+                    if (doanbiz.Addnew(idtour,name,ngaykhoihanh, ngayketthuc,tienve))
                     {
                         thongbao = " Thêm thành công ! ";
                     }
@@ -84,6 +84,15 @@ namespace TourDuLich_WEB.Controllers
                 else
                 {
                     int id = int.Parse(formdoandulich["id"]);
+                    int idtour = 0;
+                    if (formdoandulich["tour"] != null)
+                    {
+                        idtour = int.Parse(formdoandulich["tour"]);
+                    }
+                    else
+                        idtour = doanbiz.find(id).idtour;
+                    
+                    double tienve = tourbiz.TienTour(idtour);
                     if (doanbiz.UpdateBasic(id,idtour, name, ngaykhoihanh, ngayketthuc, tienve))
                     {
                         thongbao = "Cập nhật thành công ! ";

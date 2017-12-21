@@ -55,7 +55,7 @@
                     @foreach (var doan in (IList<MODEL.doandulich>)ViewBag.listdoandulich)
                     {
                         number = number + 1;
-                    <tr data-id="@doan.id" data-money="@doan.tienve" data-name="@doan.tendoan" data-start_at="@doan.ngaykhoihanh" data-finish_at="@doan.ngayketthuc" data-tour="@doan.tour.id">
+                    <tr data-id="@doan.id" data-money="@doan.tienve" data-name="@doan.tendoan" data-start_at="@doan.ngaykhoihanh" data-finish_at="@doan.ngayketthuc" data-tour="@doan.tour.id" data-khach="@doan.doankhachhangs.Count">
                         <td>@number</td>
                         <td>@doan.tendoan</td>
                         <td>@doan.ngaykhoihanh</td>
@@ -109,13 +109,13 @@
                             <label for="name">Tên đoàn </label>
                             <input class="form-control" type="text" name="name" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="tour">
                             <label for="tour">Chọn Tour</label>
-                            <select name="tour" class="form-control" style="width:300px;">
+                            <select name="tour" class="form-control" style="padding:5px;">
                                 <option value="-1" selected>-----chọn tour-----</option>
                                 @foreach (var tour in (Dictionary<int,string>)ViewBag.tour)
                                 {
-                                    <option value="@tour.Key">@tour.Value</option>
+                                    <option value="@tour.Key">@tour.Value Vé</option>
                                 }
                             </select>
 
@@ -126,17 +126,17 @@
                         </div>
                         <div class="form-group">
                             <label for="finish_at">Ngày kết thúc </label>
-                            <input class="form-control" type="datetime-local" id="finish_at" name="finish_at">
+                            <input class="form-control" type="datetime-local" id="finish_at" name="finish_at" >
                         </div>
-                        <div class="form-group">
+                        @*<div class="form-group">
                             <label for="money">Tiền Vé </label>
-                            <input class="form-control" type="number" id="money" name="money">
-                        </div>
+                            <input class="form-control" type="number" id="money" name="money" readonly value="">
+                        </div>*@
                         <button class="form-control btn-outline-primary" name="update">Lưu</button>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" >Đóng</button>
                 </div>
             </div>
         </div>
@@ -154,6 +154,8 @@
             var money = row.data("money");
             var start_at = row.data("start_at");
             var finish_at = row.data("finish_at");
+            var finish_at = row.data("finish_at");
+            var khach = row.data("khach");      
             $('input[name=id]').val(id);
             $('input[name=name]').val(name);
             $('select[name=tour]').val(tour);
@@ -162,6 +164,11 @@
             var newstart = new Date(start_at);
             $('#start_at').val(newstart.toString("yyyy-MM-ddTHH:mm"));
             $('#finish_at').val((new Date(finish_at)).toString("yyyy-MM-ddTHH:mm"));
+            $('select[name=tour]').removeAttr("disabled");
+            if (khach != "0")
+            {
+                $('select[name=tour]').attr("disabled", "disabled");
+            }
             $('#createDoandulich').modal("show");
         });
             $("#adddoan").click(function () {
@@ -170,6 +177,7 @@
                 $('select[name=tour]').val(-1);
                 $('#start_at').val("");
                 $('#finish_at').val("");
+                $('select[name=tour]').removeAttr("disabled");
                 $('#createDoandulich').modal("show");
             });
     });

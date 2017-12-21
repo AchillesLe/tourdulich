@@ -92,13 +92,18 @@ namespace TourDuLich_WEB.Controllers
                 {
                     doandulich doantemp = doanbiz.find(doandulich.id);
                     doankhachbiz.deleteByDoan(doandulich.id);
+                    int numberkh = doankh.Count;
                     foreach (var item in doankh)
                     {
                         doankhachhang kh = new doankhachhang();
                         kh.iddoan = item.iddoan;
                         kh.idkhachhang = item.idkhachhang;
-                        doankhachbiz.Add(kh); 
+                        doankhachbiz.Add(kh);
                     }
+                    double giatour = (new TourBIZ()).TienTour(doandulich.idtour);
+                    double total = giatour * numberkh;
+                    doantemp.tongtientour = total;
+                    doanbiz.UpdateTongtienDoan(doantemp);
                     Session["thongbao"] = "Cập nhật thành công danh sách !";
                     return RedirectToAction("index");
                 }
