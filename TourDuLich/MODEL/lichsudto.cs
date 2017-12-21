@@ -8,6 +8,7 @@ namespace MODEL
 {
     public class lichsudto
     {
+        //dev_1
         [System.ComponentModel.DisplayName("Mã tour")]
         public int matour { get; set; }
         [System.ComponentModel.DisplayName("Tên tour")]

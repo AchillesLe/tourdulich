@@ -60,7 +60,7 @@ namespace TourDuLich_WIN
             tablewidth();
         }
 
-        //ADDloaitour
+        //ADDloaitour/ADD to dev_1
         private void button1_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
