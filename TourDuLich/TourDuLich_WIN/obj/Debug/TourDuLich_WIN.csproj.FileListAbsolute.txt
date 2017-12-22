@@ -65,3 +65,6 @@ C:\Users\hp\Source\Repos\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLi
 E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\tourdulich\TourDuLich\TourDuLich_WIN\bin\Debug\TourDuLich_WIN.exe.config
 E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.exe
 E:\GoogleDrive\PHATTRIENMOHINHPHANLOP\Tourdulich\tourdulich\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.pdb
+C:\Users\nbduy\OneDrive\Tài liệu\GitHub\tourdulich\TourDuLich\TourDuLich_WIN\bin\Debug\TourDuLich_WIN.exe.config
+C:\Users\nbduy\OneDrive\Tài liệu\GitHub\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.exe
+C:\Users\nbduy\OneDrive\Tài liệu\GitHub\tourdulich\TourDuLich\TourDuLich_WIN\obj\Debug\TourDuLich_WIN.pdb
