@@ -20,7 +20,7 @@ namespace BIZ
         }
         public double tienloimoitour(List<doandulich> listddl)
         {
-            double tienkh = 0, tienan = 0, tienpt = 0, tienchiphikhac = 0, tongtienve = 0;
+            double tienkh = 0, tienan = 0, tienpt = 0, tienchiphikhac = 0, tongtiendoan = 0;
             double tienloi;
             foreach (doandulich item in listddl)
             {
@@ -28,9 +28,9 @@ namespace BIZ
                 tienpt += item.tongtienphuongtien;
                 tienan += item.tongtienan;
                 tienchiphikhac += item.tongtienchiphikhac;
-                tongtienve += item.tienve;
+                tongtiendoan += item.tongtientour;
             }
-            tienloi = tongtienve - (tienkh + tienpt + tienan + tienchiphikhac);
+            tienloi = tongtiendoan - (tienkh + tienpt + tienan + tienchiphikhac);
             return tienloi;
         }
     }
